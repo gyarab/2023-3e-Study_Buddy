@@ -1,6 +1,6 @@
 package com.example.socialnisitprostudenty.registration.token;
 
-import com.example.socialnisitprostudenty.Student.Student;
+import com.example.socialnisitprostudenty.student.Student;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

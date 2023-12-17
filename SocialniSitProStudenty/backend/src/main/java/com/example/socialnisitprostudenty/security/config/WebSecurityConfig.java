@@ -1,6 +1,6 @@
 package com.example.socialnisitprostudenty.security.config;
 
-import com.example.socialnisitprostudenty.Student.StudentService;
+import com.example.socialnisitprostudenty.student.StudentService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,11 +28,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/api/v*/registration/**")
-                    .permitAll()
-                .anyRequest()
-                .authenticated().and()
+                    .antMatchers("/api/v*/registration/**").permitAll()
+                    .antMatchers("/api/v*/student").authenticated()
+                .antMatchers("/api/v*/student/**").authenticated()
+                    //.anyRequest().authenticated() - zamkne vše krom těch co nejsou uvedeny nahoře
+                .and()
                 .formLogin();
+                //.loginPage("/login")// nastaví vlastní stránky
+                //.permitAll(); //-- přístup pro všechny
     }
 
     @Override

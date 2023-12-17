@@ -1,68 +1,147 @@
-package com.example.socialnisitprostudenty.registration;
+package com.example.socialnisitprostudenty.student;
 
 import com.example.socialnisitprostudenty.email.EmailSender;
+import com.example.socialnisitprostudenty.registration.EmailValidator;
 import com.example.socialnisitprostudenty.registration.token.ConfirmationToken;
 import com.example.socialnisitprostudenty.registration.token.ConfirmationTokenService;
-import com.example.socialnisitprostudenty.student.Student;
-import com.example.socialnisitprostudenty.student.StudentRole;
-import com.example.socialnisitprostudenty.student.StudentService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.*;
 
+/**
+ * Třída dělající příkazy
+ */
 @Service
 @AllArgsConstructor
-public class RegistrationService {
+public class StudentService implements UserDetailsService {
 
-    private final StudentService studentService;
-    private final EmailValidator emailValidator;
+    private final static String USER_NOT_FOUND = "User with email with %s not found.";
+    private final StudentRepository studentRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService confirmationTokenService;
+    private final EmailValidator emailValidator;
     private final EmailSender emailSender;
 
+
     /**
-     * Zpracuje request o zaslání emailu a zavolá metodu, která ho pošle
+     * Metoda, která vrací všechny studenty z databáze.
+     */
+    public List<Student> getStudents(){
+        return studentRepository.findAll();
+    }
+
+    /**
+     * Metoda, která přidá nového studenta.
      * */
-    public String request(RegistrationRequest request) {
-        boolean isValidEmail = emailValidator.test(request.getEmail());
-        if(!isValidEmail){
-            throw new IllegalStateException("email not valid");
+    public void addNewStudent(Student student) {
+        Optional<Student> studentOptional = studentRepository.findStudentsByEmail(student.getEmail());
+        if (studentOptional.isPresent()) {
+            throw new IllegalStateException("email je zabraný");
         }
 
-        String token = studentService.signUpUser(new Student(request.getName(), request.getEmail(), request.getPassword(), StudentRole.USER));
-        String link = "http://localhost:8080/api/v1/registration/confirm?token=" + token;
-        //emailSender.send(request.getEmail(), buildEmail(request.getName(), link)); // - musí se zpustit až se dá ven
+        if(!student.isEmail()){
+            throw new IllegalStateException("email neexistuje");
+        }
+
+        if (!student.passwordChars()) {
+            throw new IllegalStateException("moc krátné heslo");
+        }
+
+        if (!student.nameChars()) {
+            throw new IllegalStateException("moc krátné jmeno");
+        }
+
+        studentRepository.save(student);
+    }
+
+    /**
+     * Metoda, která smaže studenta z databáze podle id.
+     * */
+    public void delateStudent(Long studentId) {
+        boolean exist = studentRepository.existsById(studentId);
+        if (!exist) {
+            throw new IllegalStateException("student s id " + studentId + " neexistuje");
+        }
+        studentRepository.deleteById(studentId);
+    }
+
+    /**
+     * Metoda na změnéní jména, emailu nebo hesla
+     * */
+    @Transactional
+    public void updateStudent(Long studentId, String name, String email, String password, Long[] articles) {
+        Student student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalStateException("student s id " + studentId + " neexistuje"));
+
+        if (name != null && student.nameChars(name) && !Objects.equals(student.getName(), name)) {
+            student.setName(name);
+        }
+
+        if (email != null && !Objects.equals(student.getEmail(), email)) {
+            Optional<Student> studentOptional = studentRepository.findStudentsByEmail(email);
+            if (studentOptional.isPresent()) {
+                throw new IllegalStateException("email je zabraný");
+            }
+
+            if(!student.isEmail(email)){
+                throw new IllegalStateException("email neexistuje");
+            }
+
+            student.setEmail(email);
+        }
+
+        if (password != null && student.passwordChars(password) && !Objects.equals(student.getPassword(), password)) {
+            student.setPassword(password);
+        }
+
+        if (articles != null && !Arrays.equals(student.getArticles(), articles)) {
+            student.setArticles(articles);
+        }
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return studentRepository.findStudentsByEmail(email).orElseThrow(() -> new UsernameNotFoundException(String.format(USER_NOT_FOUND)));
+    }
+
+    public String signUpUser(Student student){
+        boolean userExists = studentRepository.findStudentsByEmail(student.getEmail()).isPresent();
+
+        if (userExists) {
+            // TODO zhistit zda atributy jsou stejné a pokud email není potvrzen poslat potvrzovací email.
+
+            throw new IllegalStateException("email already taken");
+        }
+
+        String encodedPassword = bCryptPasswordEncoder
+                .encode(student.getPassword());
+
+        student.setPassword(encodedPassword);
+
+        studentRepository.save(student);
+
+        String token = UUID.randomUUID().toString();
+
+        ConfirmationToken confirmationToken = new ConfirmationToken(token, LocalDateTime.now(), LocalDateTime.now().plusMinutes(15), student);
+
+        confirmationTokenService.saveConfirmationToken(
+                confirmationToken);
+
+//        TODO: POSLAT EMAIL
 
         return token;
     }
 
-
-    /**
-     * Metoda zajišťující potvrzení tokenu z emailu
-     * */
-    @Transactional
-    public String confirmToken(String token) {
-        ConfirmationToken confirmationToken = confirmationTokenService.getToken(token).orElseThrow(() -> new IllegalStateException("token not found"));
-
-        if (confirmationToken.getConfirmedat() != null) {
-            throw new IllegalStateException("email already confirmed");
-        }
-
-        LocalDateTime expiredAt = confirmationToken.getExpiresat();
-
-        if (expiredAt.isBefore(LocalDateTime.now())) {
-            throw new IllegalStateException("token expired");
-        }
-
-        confirmationTokenService.setConfirmedAt(token);
-        studentService.enableAppUser(confirmationToken.getStudent().getEmail());
-        return "confirmed";
+    public int enableAppUser(String email) {
+        return studentRepository.enableStudent(email);
     }
 
-    /**
-     * Mail
-     * */
     private String buildEmail(String name, String link) {
         return "<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16px;margin:0;color:#0b0c0c\">\n" +
                 "\n" +
