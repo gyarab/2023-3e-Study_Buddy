@@ -29,13 +29,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                     .antMatchers("/api/v*/registration/**").permitAll()
-                    .antMatchers("/api/v*/student").authenticated()
-                .antMatchers("/api/v*/student/**").authenticated()
-                    //.anyRequest().authenticated() - zamkne vše krom těch co nejsou uvedeny nahoře
+                    .antMatchers("/registration").permitAll()
+                .anyRequest().authenticated() // zamkne vše krom těch co nejsou uvedeny nahoře
                 .and()
-                .formLogin();
-                //.loginPage("/login")// nastaví vlastní stránky
-                //.permitAll(); //-- přístup pro všechny
+                .formLogin()
+                .loginPage("/login")// nastaví vlastní stránky
+                .permitAll(); //-- přístup pro všechny
     }
 
     @Override
