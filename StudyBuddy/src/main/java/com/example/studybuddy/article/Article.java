@@ -18,90 +18,33 @@ public class Article {
     @SequenceGenerator(name = "article_sequence", sequenceName = "article_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "article_sequence")
     private Long id;
+    @Column(name = "autor")
     private Long autor;
+    @Column(name = "title")
     private String title;
+    @Column(name = "article")
     private String article;
-    private int likes;
-    private int dislikes;
-    private Long[] coments;
+    @Column(name = "date")
     private LocalDate date;
+    @Column(name = "subject")
     private String subject;
 
-    /**
-     * Konstruktory
-     * */
-    public Article(String title, Long autor, String article, int likes, int dislikes, Long[] coments, LocalDate date, String subject) {
-        this.title = title;
-        this.autor = autor;
-        this.article = article;
-        this.likes = likes;
-        this.dislikes = dislikes;
-        this.coments = coments;
-        this.date = date;
-        this.subject = subject;
-    }
-
-    public Article(Long id, Long autor, String title, String article, int likes, int dislikes, LocalDate date, String subject) {
-        this.id = id;
-        this.autor = autor;
-        this.title = title;
-        this.article = article;
-        this.likes = likes;
-        this.dislikes = dislikes;
-        this.date = date;
-        this.subject = subject;
-    }
-
-    public Article(String title, Long autor, String article, int likes, int dislikes, LocalDate date, String subject) {
-        this.title = title;
-        this.autor = autor;
-        this.article = article;
-        this.likes = likes;
-        this.dislikes = dislikes;
-        this.date = date;
-        this.subject = subject;
-    }
-
-    public Article(Long id, Long autor, String title, String article, Long[] coments, LocalDate date, String subject) {
-        this.id = id;
-        this.autor = autor;
-        this.title = title;
-        this.article = article;
-        this.likes = 0;
-        this.dislikes = 0;
-        this.coments = coments;
-        this.date = date;
-        this.subject = subject;
-    }
-
-    public Article(String title, Long autor, String article, Long[] coments, LocalDate date, String subject) {
-        this.title = title;
-        this.autor = autor;
-        this.article = article;
-        this.likes = 0;
-        this.dislikes = 0;
-        this.coments = coments;
-        this.date = date;
-        this.subject = subject;
-    }
-
-    public Article(Long id, Long autor, String title, String article, LocalDate date, String subject) {
-        this.id = id;
-        this.autor = autor;
-        this.title = title;
-        this.article = article;
-        this.likes = 0;
-        this.dislikes = 0;
-        this.date = date;
-        this.subject = subject;
+    @Override
+    public String toString() {
+        return "Article{" +
+                "id=" + id +
+                ", autor=" + autor +
+                ", title='" + title + '\'' +
+                ", article='" + article + '\'' +
+                ", date=" + date +
+                ", subject='" + subject + '\'' +
+                '}';
     }
 
     public Article(String title, Long autor, String article, LocalDate date, String subject) {
         this.title = title;
         this.autor = autor;
         this.article = article;
-        this.likes = 0;
-        this.dislikes = 0;
         this.date = date;
         this.subject = subject;
     }

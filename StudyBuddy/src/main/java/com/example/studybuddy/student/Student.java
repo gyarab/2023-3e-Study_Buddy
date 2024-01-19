@@ -25,13 +25,18 @@ public class Student implements UserDetails {
     @SequenceGenerator(name = "student_sequence", sequenceName = "student_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_sequence")
     private Long id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "email")
     private  String email;
+    @Column(name = "password")
     private String password;
-    private Long[] articles;
+    @Column(name = "studentRole")
     @Enumerated(EnumType.STRING)
     private StudentRole studentRole;
+    @Column(name = "locked")
     private Boolean locked = false;
+    @Column(name = "enabled")
     private Boolean enabled = true;// pro testování bez email ověřování se musí dát na true
 
 
@@ -52,15 +57,6 @@ public class Student implements UserDetails {
         this.email = email;
         this.studentRole = studentRole;
     }
-
-    public Student(String name, String email, String password, Long[] articles, StudentRole studentRole) {
-        this.name = name;
-        this.password = password;
-        this.email = email;
-        this.articles = articles;
-        this.studentRole = studentRole;
-    }
-
     /**
      * Metoda k vypsání všech atribut ze třídy
      * */
@@ -71,7 +67,6 @@ public class Student implements UserDetails {
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", articles='" + Arrays.toString(articles) + '\'' +
                 '}';
     }
 
@@ -109,14 +104,6 @@ public class Student implements UserDetails {
 
     public boolean nameChars(){
         return name.length() > 2;
-    }
-
-
-    /**
-     * vrátí počet článků, které napsal daný uživatel
-     * */
-    public int numberOfArticles(){
-        return articles.length;
     }
 
 

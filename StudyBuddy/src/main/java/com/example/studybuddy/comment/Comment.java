@@ -17,11 +17,13 @@ public class Comment {
     @SequenceGenerator(name = "comment_sequence", sequenceName = "comment_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "comment_sequence")
     private Long id;
+    @Column(name = "autor")
     private Long autor;
+    @Column(name = "article")
     private Long article;
+    @Column(name = "text")
     private String text;
-    private int likes;
-    private int dislikes;
+    @Column(name = "date")
     private LocalDate date;
 
 

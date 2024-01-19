@@ -99,10 +99,6 @@ public class StudentService implements UserDetailsService {
         if (password != null && student.passwordChars(password) && !Objects.equals(student.getPassword(), password)) {
             student.setPassword(password);
         }
-
-        if (articles != null && !Arrays.equals(student.getArticles(), articles)) {
-            student.setArticles(articles);
-        }
     }
 
     @Override
