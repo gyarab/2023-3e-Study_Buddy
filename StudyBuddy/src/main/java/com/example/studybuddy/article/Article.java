@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -52,5 +53,8 @@ public class Article {
     public Article(String title, String article) {
         this.article = article;
         this.title = title;
+        this.date = LocalDate.now();
     }
+    //TODO: Musí se zjistit uživatel, kterej je přihlášen a pak ho uložit jakožto autora článku
+    //TODO: Musí se naplnit databáze subject předměty a pak vytvořit přiřazování předmětů k článkům
 }

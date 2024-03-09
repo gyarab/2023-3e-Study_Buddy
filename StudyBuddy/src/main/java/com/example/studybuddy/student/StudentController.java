@@ -47,7 +47,7 @@ public class StudentController {
      * Příkaz na přepsání jednoho ze studentů
      */
     @PutMapping(path = "{studentId}")
-    public void updateStudent( @PathVariable("studentId") Long studentId, @RequestParam(required = false) String name, @RequestParam(required = false) String email, @RequestParam(required = false) String password, Long[] articles){
-        studentService.updateStudent(studentId, name, email, password, articles);
+    public void updateStudent( @PathVariable("studentId") Long studentId, @RequestParam(required = false) String name, @RequestParam(required = false) String email, @RequestParam(required = false) String password){
+        studentService.updateStudent(studentId, name, email, password);
     }
 }

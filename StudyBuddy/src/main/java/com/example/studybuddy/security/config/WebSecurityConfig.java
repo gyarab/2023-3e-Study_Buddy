@@ -36,6 +36,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")// nastaví vlastní stránky
                 .permitAll(); //-- přístup pro všechny
+
+        //TODO: až se vše dodělá musí se přenastavit
     }
 
     @Override

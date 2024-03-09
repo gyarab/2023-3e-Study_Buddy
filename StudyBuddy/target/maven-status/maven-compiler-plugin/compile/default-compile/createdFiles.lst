@@ -1,0 +1,7 @@
+com\example\studybuddy\subject\Subject.class
+com\example\studybuddy\validators\NameValidator.class
+com\example\studybuddy\validators\PasswordValidator.class
+com\example\studybuddy\validators\IdValidator.class
+com\example\studybuddy\article\ArticleRequest.class
+com\example\studybuddy\validators\EmailValidator.class
+com\example\studybuddy\validators\TokenValidator.class

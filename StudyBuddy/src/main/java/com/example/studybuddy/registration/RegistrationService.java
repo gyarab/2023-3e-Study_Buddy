@@ -38,7 +38,8 @@ public class RegistrationService {
 
         String token = studentService.signUpUser(student);
         String link = "http://localhost:8080/api/v1/registration/confirm?token=" + token;
-        //emailSender.send(request.getEmail(), buildEmail(request.getName(), link)); // - musí se zpustit až se dá ven
+        //TODO: Musí se zprovoznit posílání emailů
+        //emailSender.send(request.getEmail(), buildEmail(request.getName(), link));
 
         return token;
     }

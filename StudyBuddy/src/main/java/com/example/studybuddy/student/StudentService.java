@@ -69,7 +69,7 @@ public class StudentService implements UserDetailsService {
      * Metoda na změnéní jména, emailu nebo hesla
      * */
     @Transactional
-    public void updateStudent(Long studentId, String name, String email, String password, Long[] articles) {
+    public void updateStudent(Long studentId, String name, String email, String password) {
         Student student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalStateException("student s id " + studentId + " neexistuje"));
 
         if (name != null && student.nameChars(name) && !Objects.equals(student.getName(), name)) {
@@ -96,17 +96,19 @@ public class StudentService implements UserDetailsService {
         boolean userExists = studentRepository.findStudentsByEmail(student.getEmail()).isPresent();
 
         if (userExists) {
-            // TODO zjistit zda atributy jsou stejné a pokud email není potvrzen poslat potvrzovací email.
+            if(!student.getEnabled()){
+                throw new IllegalStateException("email již zabrán");
+            }
+            // TODO: Smazat staré informace o studentovy a dát nové
+        }  else {
 
-            throw new IllegalStateException("email již zabrán");
+            String encodedPassword = bCryptPasswordEncoder
+                    .encode(student.getPassword());
+
+            student.setPassword(encodedPassword);
+
+            studentRepository.save(student);
         }
-
-        String encodedPassword = bCryptPasswordEncoder
-                .encode(student.getPassword());
-
-        student.setPassword(encodedPassword);
-
-        studentRepository.save(student);
 
         String token = UUID.randomUUID().toString();
 

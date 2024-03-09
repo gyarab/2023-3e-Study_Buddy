@@ -26,5 +26,5 @@ public class Comment {
     @Column(name = "date")
     private LocalDate date;
 
-
+    //TODO: musí se kompletně dodělat
 }
