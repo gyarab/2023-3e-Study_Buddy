@@ -41,8 +41,8 @@ public class Student implements UserDetails {
 
 
     /**
-    * Konstriktory
-    * */
+     * Konstriktory
+     * */
     public Student(Long id, String name, String email, String password, StudentRole studentRole) {
         this.id = id;
         this.name = name;

@@ -1,5 +1,8 @@
 package com.example.studybuddy.article;
 
+import com.example.studybuddy.validators.IdValidator;
+import com.example.studybuddy.validators.NameValidator;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,14 +14,12 @@ import java.util.Optional;
  * Třída dělající příkazy
  */
 @Service
+@AllArgsConstructor
 public class ArticleService {
 
     private final ArticleRepository articleRepository;
-
-    @Autowired
-    public ArticleService(ArticleRepository articleRepository) {
-        this.articleRepository = articleRepository;
-    }
+    private final NameValidator nameValidator;
+    private final IdValidator idValidator;
 
     /**
      * Metoda, která vrací všechny články z databáze.
@@ -30,18 +31,11 @@ public class ArticleService {
     /**
      * Metoda, která přidá nový článek.
      * */
-    public void addNewArticle(Article article) {
-        Optional<Article> articleOptional = articleRepository.findArticlesByTitle(article.getTitle());
+    public void addNewArticle(ArticleRequest articleRequest) {
 
-        if (articleOptional.isPresent()) {
-            throw new IllegalStateException("Název již existuje. Zvolte jiný.");
-        }
+        Article article = new Article(articleRequest.getTitle(), articleRequest.getArticle());
 
-        articleOptional = articleRepository.findArticlesByArticle(article.getArticle());
-
-        if (articleOptional.isPresent()) {
-            throw new IllegalStateException("Název již existuje. Zvolte jiný.");
-        }
+        nameValidator.test(article);
 
         articleRepository.save(article);
     }
@@ -50,10 +44,9 @@ public class ArticleService {
      * Metoda, která smaže článek z databáze podle id.
      * */
     public void delateArticle(Long artilceId) {
-        boolean exist = articleRepository.existsById(artilceId);
-        if (!exist) {
-            throw new IllegalStateException("student s id " + artilceId + " neexistuje");
-        }
+
+        idValidator.testArticle(artilceId);
+
         articleRepository.deleteById(artilceId);
     }
 

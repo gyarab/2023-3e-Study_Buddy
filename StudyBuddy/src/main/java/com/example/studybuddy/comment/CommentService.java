@@ -1,5 +1,7 @@
 package com.example.studybuddy.comment;
 
+import com.example.studybuddy.validators.IdValidator;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,15 +12,12 @@ import java.util.Optional;
  * Třída dělající komentářů
  */
 @Service
+@AllArgsConstructor
 public class CommentService {
 
-
     private final CommentRepository commentRepository;
+    private final IdValidator idValidator;
 
-    @Autowired
-    public CommentService(CommentRepository commentRepository) {
-        this.commentRepository = commentRepository;
-    }
 
     /**
      * Metoda, která vrací všechny články z databáze.
@@ -31,11 +30,6 @@ public class CommentService {
      * Metoda, která přidá nový článek.
      * */
     public void addNewComment(Comment comment) {
-        Optional<Comment> commentOptional = commentRepository.findCommentsByArticle(comment.getArticle());
-        if (commentOptional.isPresent()) {
-            throw new IllegalStateException("Název již existuje. Zvolte jiný.");
-        }
-
         commentRepository.save(comment);
     }
 
@@ -43,10 +37,9 @@ public class CommentService {
      * Metoda, která smaže článek z databáze podle id.
      * */
     public void delateComment(Long commentId) {
-        boolean exist = commentRepository.existsById(commentId);
-        if (!exist) {
-            throw new IllegalStateException("student s id " + commentId + " neexistuje");
-        }
+
+        idValidator.testComment(commentId);
+
         commentRepository.deleteById(commentId);
     }
 }

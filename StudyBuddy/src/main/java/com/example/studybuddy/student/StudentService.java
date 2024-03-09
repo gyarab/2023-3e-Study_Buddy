@@ -1,9 +1,12 @@
 package com.example.studybuddy.student;
 
 import com.example.studybuddy.email.EmailSender;
-import com.example.studybuddy.registration.EmailValidator;
+import com.example.studybuddy.validators.EmailValidator;
 import com.example.studybuddy.registration.token.ConfirmationToken;
 import com.example.studybuddy.registration.token.ConfirmationTokenService;
+import com.example.studybuddy.validators.IdValidator;
+import com.example.studybuddy.validators.NameValidator;
+import com.example.studybuddy.validators.PasswordValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -27,6 +30,9 @@ public class StudentService implements UserDetailsService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService confirmationTokenService;
     private final EmailValidator emailValidator;
+    private final PasswordValidator passwordValidator;
+    private final NameValidator nameValidator;
+    private final IdValidator idValidator;
     private final EmailSender emailSender;
 
 
@@ -41,22 +47,10 @@ public class StudentService implements UserDetailsService {
      * Metoda, která přidá nového studenta.
      * */
     public void addNewStudent(Student student) {
-        Optional<Student> studentOptional = studentRepository.findStudentsByEmail(student.getEmail());
-        if (studentOptional.isPresent()) {
-            throw new IllegalStateException("email je zabraný");
-        }
 
-        if(!student.isEmail()){
-            throw new IllegalStateException("email neexistuje");
-        }
-
-        if (!student.passwordChars()) {
-            throw new IllegalStateException("moc krátné heslo");
-        }
-
-        if (!student.nameChars()) {
-            throw new IllegalStateException("moc krátné jmeno");
-        }
+        emailValidator.test(student);
+        nameValidator.test(student);
+        passwordValidator.test(student);
 
         studentRepository.save(student);
     }
@@ -65,10 +59,9 @@ public class StudentService implements UserDetailsService {
      * Metoda, která smaže studenta z databáze podle id.
      * */
     public void delateStudent(Long studentId) {
-        boolean exist = studentRepository.existsById(studentId);
-        if (!exist) {
-            throw new IllegalStateException("student s id " + studentId + " neexistuje");
-        }
+
+        idValidator.testStudent(studentId);
+
         studentRepository.deleteById(studentId);
     }
 
@@ -84,14 +77,7 @@ public class StudentService implements UserDetailsService {
         }
 
         if (email != null && !Objects.equals(student.getEmail(), email)) {
-            Optional<Student> studentOptional = studentRepository.findStudentsByEmail(email);
-            if (studentOptional.isPresent()) {
-                throw new IllegalStateException("email je zabraný");
-            }
-
-            if(!student.isEmail(email)){
-                throw new IllegalStateException("email neexistuje");
-            }
+            emailValidator.test(student);
 
             student.setEmail(email);
         }
@@ -110,9 +96,9 @@ public class StudentService implements UserDetailsService {
         boolean userExists = studentRepository.findStudentsByEmail(student.getEmail()).isPresent();
 
         if (userExists) {
-            // TODO zhistit zda atributy jsou stejné a pokud email není potvrzen poslat potvrzovací email.
+            // TODO zjistit zda atributy jsou stejné a pokud email není potvrzen poslat potvrzovací email.
 
-            throw new IllegalStateException("email already taken");
+            throw new IllegalStateException("email již zabrán");
         }
 
         String encodedPassword = bCryptPasswordEncoder

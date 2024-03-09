@@ -6,11 +6,13 @@ import com.example.studybuddy.registration.token.ConfirmationTokenService;
 import com.example.studybuddy.student.Student;
 import com.example.studybuddy.student.StudentRole;
 import com.example.studybuddy.student.StudentService;
+import com.example.studybuddy.validators.EmailValidator;
+import com.example.studybuddy.validators.NameValidator;
+import com.example.studybuddy.validators.PasswordValidator;
+import com.example.studybuddy.validators.TokenValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDateTime;
 
 @Service
 @AllArgsConstructor
@@ -18,19 +20,23 @@ public class RegistrationService {
 
     private final StudentService studentService;
     private final EmailValidator emailValidator;
+    private final NameValidator nameValidator;
+    private final PasswordValidator passwordValidator;
     private final ConfirmationTokenService confirmationTokenService;
+    private final TokenValidator tokenValidator;
     private final EmailSender emailSender;
 
     /**
      * Zpracuje request o zaslání emailu a zavolá metodu, která ho pošle
      * */
     public String request(RegistrationRequest request) {
-        boolean isValidEmail = emailValidator.test(request.getEmail());
-        if(!isValidEmail){
-            throw new IllegalStateException("email not valid");
-        }
+        Student student = new Student(request.getName(), request.getEmail(), request.getPassword(), StudentRole.USER);
 
-        String token = studentService.signUpUser(new Student(request.getName(), request.getEmail(), request.getPassword(), StudentRole.USER));
+        emailValidator.test(student);
+        nameValidator.test(student);
+        passwordValidator.test(student);
+
+        String token = studentService.signUpUser(student);
         String link = "http://localhost:8080/api/v1/registration/confirm?token=" + token;
         //emailSender.send(request.getEmail(), buildEmail(request.getName(), link)); // - musí se zpustit až se dá ven
 
@@ -43,17 +49,10 @@ public class RegistrationService {
      * */
     @Transactional
     public String confirmToken(String token) {
+
+        tokenValidator.test(token);
+
         ConfirmationToken confirmationToken = confirmationTokenService.getToken(token).orElseThrow(() -> new IllegalStateException("token not found"));
-
-        if (confirmationToken.getConfirmedat() != null) {
-            throw new IllegalStateException("email already confirmed");
-        }
-
-        LocalDateTime expiredAt = confirmationToken.getExpiresat();
-
-        if (expiredAt.isBefore(LocalDateTime.now())) {
-            throw new IllegalStateException("token expired");
-        }
 
         confirmationTokenService.setConfirmedAt(token);
         studentService.enableAppUser(confirmationToken.getStudent().getEmail());

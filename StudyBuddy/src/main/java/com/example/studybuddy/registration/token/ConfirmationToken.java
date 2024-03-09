@@ -20,21 +20,22 @@ public class ConfirmationToken {
     @SequenceGenerator(name = "confirmation_token_sequence",sequenceName = "confirmation_token_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "confirmation_token_sequence")
     private Long id;
-    @Column(nullable = false)
+    @Column(name = "token", nullable = false)
     private String token;
-    @Column(nullable = false)
-    private LocalDateTime createdat;
-    @Column(nullable = false)
+    @Column(name = "createdate", nullable = false)
+    private LocalDateTime createdate;
+    @Column(name = "expiresat", nullable = false)
     private LocalDateTime expiresat;
+    @Column(name = "confirmedat")
     private LocalDateTime confirmedat;
 
     @ManyToOne
     @JoinColumn(nullable = false, name = "student_id")
     private Student student;
 
-    public ConfirmationToken(String token, LocalDateTime createdat, LocalDateTime expiresat, Student student) {
+    public ConfirmationToken(String token, LocalDateTime createdate, LocalDateTime expiresat, Student student) {
         this.token = token;
-        this.createdat = createdat;
+        this.createdate = createdate;
         this.expiresat = expiresat;
         this.student = student;
     }

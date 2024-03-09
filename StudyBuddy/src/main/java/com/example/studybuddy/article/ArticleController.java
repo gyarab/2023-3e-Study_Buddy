@@ -33,7 +33,7 @@ public class ArticleController {
      * Příkaz na přidání článku
      */
     @PostMapping
-    public void addNewAtricle(@RequestBody Article article) {
+    public void addNewAtricle(@RequestBody ArticleRequest article) {
         articleService.addNewArticle(article);
     }
 
