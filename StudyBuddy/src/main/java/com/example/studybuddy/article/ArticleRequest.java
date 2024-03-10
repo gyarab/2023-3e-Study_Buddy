@@ -5,6 +5,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+/**
+ * Tělo nově zadaného článku
+ * */
 @AllArgsConstructor
 @Getter
 @ToString

@@ -26,5 +26,11 @@ public class Comment {
     @Column(name = "date")
     private LocalDate date;
 
+    public Comment(String comment, Long article){
+        this.text = comment;
+        this.article = article;
+        this.date = LocalDate.now();
+    }
+
     //TODO: musí se kompletně dodělat
 }

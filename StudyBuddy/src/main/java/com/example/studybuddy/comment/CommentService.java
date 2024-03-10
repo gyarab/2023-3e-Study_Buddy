@@ -1,5 +1,6 @@
 package com.example.studybuddy.comment;
 
+import com.example.studybuddy.article.Article;
 import com.example.studybuddy.validators.IdValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,10 @@ public class CommentService {
     /**
      * Metoda, která přidá nový článek.
      * */
-    public void addNewComment(Comment comment) {
+    public void addNewComment(CommentRequest commentRequest) {
+
+        Comment comment = new Comment(commentRequest.getComment(), commentRequest.getArticleId());
+
         commentRepository.save(comment);
     }
 
@@ -42,4 +46,6 @@ public class CommentService {
 
         commentRepository.deleteById(commentId);
     }
+
+
 }

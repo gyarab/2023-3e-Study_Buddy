@@ -15,9 +15,7 @@ function Articles(){
         })
     },[])
 
-    console.log(articles)
-
-    const listArticles = articles.map(article => <><Card title={article.title} text={article.article}/><br/></>)
+    const listArticles = articles.map(article => <><Card title={article.title} text={article.article} id={article.id}/><br/></>)
 
     return(
         <>

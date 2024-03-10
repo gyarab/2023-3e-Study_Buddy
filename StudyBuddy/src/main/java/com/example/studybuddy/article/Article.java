@@ -4,7 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 
 @Entity
@@ -40,14 +39,6 @@ public class Article {
                 ", date=" + date +
                 ", subject='" + subject + '\'' +
                 '}';
-    }
-
-    public Article(String title, Long autor, String article, LocalDate date, Long subject) {
-        this.title = title;
-        this.autor = autor;
-        this.article = article;
-        this.date = date;
-        this.subject = subject;
     }
 
     public Article(String title, String article) {

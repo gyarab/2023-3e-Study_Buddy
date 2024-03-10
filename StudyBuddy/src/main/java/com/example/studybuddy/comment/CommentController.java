@@ -31,8 +31,8 @@ public class CommentController {
      * Příkaz na přidání komentáře
      */
     @PostMapping
-    public void addNewComment(@RequestBody Comment comment) {
-        commentService.addNewComment(comment);
+    public void addNewComment(@RequestBody CommentRequest commentRequest) {
+        commentService.addNewComment(commentRequest);
     }
 
     /**

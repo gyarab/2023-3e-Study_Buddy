@@ -12,6 +12,7 @@ D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\c
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\registration\RegistrationRequest.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\article\ArticleRepository.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\article\ArticleService.java
+D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\comment\CommentRequest.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\validators\PasswordValidator.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\registration\token\ConfirmationTokenService.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\registration\token\ConfirmationToken.java
