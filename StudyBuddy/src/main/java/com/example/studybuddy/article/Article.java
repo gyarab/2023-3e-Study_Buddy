@@ -41,11 +41,11 @@ public class Article {
                 '}';
     }
 
-    public Article(String title, String article) {
+    public Article(String title, String article, Long autor) {
         this.article = article;
         this.title = title;
         this.date = LocalDate.now();
+        this.autor = autor;
     }
-    //TODO: Musí se zjistit uživatel, kterej je přihlášen a pak ho uložit jakožto autora článku
     //TODO: Musí se naplnit databáze subject předměty a pak vytvořit přiřazování předmětů k článkům
 }

@@ -26,11 +26,13 @@ public class Comment {
     @Column(name = "date")
     private LocalDate date;
 
-    public Comment(String comment, Long article){
+    public Comment(String comment, Long article, Long autor){
         this.text = comment;
         this.article = article;
         this.date = LocalDate.now();
+        this.autor = autor;
     }
 
-    //TODO: musí se kompletně dodělat
+    //TODO: musí se přidat autor
+    //TODO: musí se nějak zobrazit
 }

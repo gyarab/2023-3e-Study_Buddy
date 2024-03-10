@@ -3,6 +3,7 @@ package com.example.studybuddy.comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -31,8 +32,8 @@ public class CommentController {
      * Příkaz na přidání komentáře
      */
     @PostMapping
-    public void addNewComment(@RequestBody CommentRequest commentRequest) {
-        commentService.addNewComment(commentRequest);
+    public void addNewComment(@RequestBody CommentRequest commentRequest, Principal principal) {
+        commentService.addNewComment(commentRequest, principal);
     }
 
     /**

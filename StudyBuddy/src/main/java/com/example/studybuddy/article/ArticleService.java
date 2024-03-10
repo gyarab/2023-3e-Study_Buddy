@@ -1,14 +1,18 @@
 package com.example.studybuddy.article;
 
+import com.example.studybuddy.student.Student;
+import com.example.studybuddy.student.StudentRepository;
 import com.example.studybuddy.validators.IdValidator;
 import com.example.studybuddy.validators.NameValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 /**
  * Třída dělající příkazy
@@ -20,6 +24,7 @@ public class ArticleService {
     private final ArticleRepository articleRepository;
     private final NameValidator nameValidator;
     private final IdValidator idValidator;
+    private final StudentRepository studentRepository;
 
     /**
      * Metoda, která vrací všechny články z databáze.
@@ -31,9 +36,11 @@ public class ArticleService {
     /**
      * Metoda, která přidá nový článek.
      * */
-    public void addNewArticle(ArticleRequest articleRequest) {
+    public void addNewArticle(ArticleRequest articleRequest, Principal principal) {
 
-        Article article = new Article(articleRequest.getTitle(), articleRequest.getArticle());
+        Long studentId = studentRepository.findStudentsByEmail(principal.getName()).get().getId();
+
+        Article article = new Article(articleRequest.getTitle(), articleRequest.getArticle(), studentId);
 
         nameValidator.test(article);
 
