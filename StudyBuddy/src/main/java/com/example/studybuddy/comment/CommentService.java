@@ -21,14 +21,14 @@ public class CommentService {
 
 
     /**
-     * Metoda, která vrací všechny články z databáze.
+     * Metoda, která vrací všechny komentáře z databáze.
      */
     public List<Comment> getComments(){
         return commentRepository.findAll();
     }
 
     /**
-     * Metoda, která přidá nový článek.
+     * Metoda, která přidá nový komentář.
      * */
     public void addNewComment(CommentRequest commentRequest) {
 
@@ -38,7 +38,7 @@ public class CommentService {
     }
 
     /**
-     * Metoda, která smaže článek z databáze podle id.
+     * Metoda, která smaže komentář z databáze podle id.
      * */
     public void delateComment(Long commentId) {
 
