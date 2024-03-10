@@ -33,6 +33,5 @@ public class Comment {
         this.autor = autor;
     }
 
-    //TODO: musí se přidat autor
     //TODO: musí se nějak zobrazit
 }
