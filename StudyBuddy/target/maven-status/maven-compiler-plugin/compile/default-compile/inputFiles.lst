@@ -1,5 +1,6 @@
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\comment\CommentController.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\comment\CommentRepository.java
+D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\student\StudentRequest.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\StudyBuddyApplication.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\email\EmailSender.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\registration\RegistrationService.java
@@ -11,6 +12,7 @@ D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\c
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\student\StudentService.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\registration\RegistrationRequest.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\article\ArticleRepository.java
+D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\articleSubject\SubjectRequest.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\article\ArticleService.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\comment\CommentRequest.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\validators\PasswordValidator.java
@@ -22,10 +24,13 @@ D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\c
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\student\Student.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\student\StudentRole.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\student\StudentRepository.java
+D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\articleSubject\SubjectRepository.java
+D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\articleSubject\SubjectService.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\student\StudentController.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\validators\IdValidator.java
-D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\subject\Subject.java
+D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\articleSubject\Subject.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\validators\TokenValidator.java
+D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\articleSubject\SubjectController.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\article\Article.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\article\ArticleController.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\article\ArticleRequest.java

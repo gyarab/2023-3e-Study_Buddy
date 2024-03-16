@@ -1,9 +1,11 @@
 import React from 'react';
+import {Navigate} from "react-router-dom";
 
-const Register = ({ switchToLogin }) => {
+function Register (){
     const [name, setUsername] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const [goToChange, setGoToChange] = React.useState(false);
 
     const handelOnClick=(e)=>{
         e.preventDefault()
@@ -13,6 +15,7 @@ const Register = ({ switchToLogin }) => {
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(student)
         })
+        setGoToChange(true);
     }
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
@@ -26,6 +29,11 @@ const Register = ({ switchToLogin }) => {
         setPassword(event.target.value);
     };
 
+    if(goToChange){
+        return <Navigate to={"/login"}/>;
+    }
+
+
     return (
         <div className="auth-form-container">
             <h1>Sign-up</h1>
@@ -36,6 +44,6 @@ const Register = ({ switchToLogin }) => {
             <p className="link-btn">Already have an account? <a className="nav-link" href="/login"> Log in</a> </p>
         </div>
     );
-};
+}
 
 export default Register;

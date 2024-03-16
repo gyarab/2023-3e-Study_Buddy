@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-const Login = ({ switchToRegister }) => {
+function Login () {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
@@ -25,6 +25,6 @@ const Login = ({ switchToRegister }) => {
             </fieldset>
         </form>
     );
-};
+}
 
 export default Login;

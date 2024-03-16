@@ -1,4 +1,4 @@
-package com.example.studybuddy.subject;
+package com.example.studybuddy.student;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -6,12 +6,13 @@ import lombok.Getter;
 import lombok.ToString;
 
 /**
- * tělo požadavku pro předmět
+ * parametry pro změnu hesla
  * */
 @AllArgsConstructor
 @Getter
 @ToString
 @EqualsAndHashCode
-public class SubjectRequest {
-    private final Long subjectId;
+public class PasswordChange {
+    private final String oldPassword;
+    private final String newPassword;
 }

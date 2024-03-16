@@ -24,7 +24,7 @@ function Card(props){
     return(
         <div className="card">
             <h2>{props.title}</h2>
-            <p>{props.text}</p>
+            <div dangerouslySetInnerHTML={{__html:props.text}}/>
             <div>
                 <input value={comment} type="text" placeholder="Add new comment" onChange={handleCommentChange} />
                 <button onClick={handelOnClick}>Post comment</button>

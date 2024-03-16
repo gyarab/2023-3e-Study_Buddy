@@ -15,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -52,6 +53,11 @@ public class StudentService implements UserDetailsService {
         nameValidator.test(student);
         passwordValidator.test(student);
 
+        String encodedPassword = bCryptPasswordEncoder
+                .encode(student.getPassword());
+
+        student.setPassword(encodedPassword);
+
         studentRepository.save(student);
     }
 
@@ -66,24 +72,30 @@ public class StudentService implements UserDetailsService {
     }
 
     /**
-     * Metoda na změnéní jména, emailu nebo hesla
+     * Metoda na změnéní jména nebo hesla
      * */
     @Transactional
-    public void updateStudent(Long studentId, String name, String email, String password) {
-        Student student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalStateException("student s id " + studentId + " neexistuje"));
+    public void updateStudentUsename(String email, String name) {
+        Student student = studentRepository.findStudentsByEmail(email).orElseThrow(() -> new IllegalStateException("student s emailem " + email + " neexistuje"));
 
         if (name != null && student.nameChars(name) && !Objects.equals(student.getName(), name)) {
             student.setName(name);
         }
+    }
 
-        if (email != null && !Objects.equals(student.getEmail(), email)) {
-            emailValidator.test(student);
+    /**
+     * Metoda na změnéní jména nebo hesla
+     * */
+    @Transactional
+    public void updateStudentPassword(String email, String oldPassword,String newPassword) {
+        Student student = studentRepository.findStudentsByEmail(email).orElseThrow(() -> new IllegalStateException("student s emailem " + email + " neexistuje"));
 
-            student.setEmail(email);
-        }
+        if(bCryptPasswordEncoder.matches(oldPassword, student.getPassword())){
+            if (newPassword != null && student.passwordChars(newPassword) && !Objects.equals(student.getPassword(), newPassword)) {
+                String encodedPassword = bCryptPasswordEncoder.encode(newPassword);
 
-        if (password != null && student.passwordChars(password) && !Objects.equals(student.getPassword(), password)) {
-            student.setPassword(password);
+                student.setPassword(encodedPassword);
+            }
         }
     }
 

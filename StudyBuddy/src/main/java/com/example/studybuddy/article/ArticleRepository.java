@@ -16,17 +16,7 @@ public interface ArticleRepository extends JpaRepository<Article, Long>{
 
     @Query("SELECT a FROM Article a WHERE a.title = ?1")
     Optional<Article> findArticlesByTitle(String title);
-
-    @Query("SELECT a FROM Article a WHERE a.article = ?1")
-    Optional<Article> findArticlesByArticle(String article);
-
     @Query("SELECT a FROM Article a WHERE a.autor = ?1")
-    List<Article> findArticlesByAutor(String autor);
+    List<Article> findArticlesByAutor(Long autor);
 
-    @Query("SELECT a FROM Article a WHERE a.date = ?1")
-    List<Article> findArticlesByDate(LocalDate date);
-
-
-    @Query("SELECT a FROM Article a WHERE a.subject = ?1")
-    List<Article> findArticlesBySubject(String subject);
 }

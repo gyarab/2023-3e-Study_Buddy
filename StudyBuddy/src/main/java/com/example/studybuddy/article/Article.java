@@ -22,7 +22,7 @@ public class Article {
     private Long autor;
     @Column(name = "title")
     private String title;
-    @Column(name = "article")
+    @Column(name = "article", length = 1000000)
     private String article;
     @Column(name = "date")
     private LocalDate date;

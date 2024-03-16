@@ -9,7 +9,7 @@ import Login from "./components/login/Login"
 import Register from "./components/register/Register"
 import Account from "./components/account/Account";
 import NavBar from "./components/navbar/NavBar";
-import {useState} from "react";
+import ResetPassword from "./components/reset_password/ResetPassword";
 
 function App() {
   return (
@@ -20,10 +20,10 @@ function App() {
             <Routes>
               <Route index element={<Home />} />
               <Route path="/login/" element={<Login/>} />
+              <Route path="/login/reset_password/" element={<ResetPassword />} />
               <Route path="/register/" element={<Register />} />
-              <Route path="/user/acount/**/" element={<Account />} />
+              <Route path="/user/account/" element={<Account />} />
               <Route path="/user/article/create/" element={<CreateArticle />} />
-              <Route path="/user/comment/create/" element={<CreateComment/>} />
               <Route path="/user/articles/" element={<Articles />} />
             </Routes>
           </BrowserRouter>

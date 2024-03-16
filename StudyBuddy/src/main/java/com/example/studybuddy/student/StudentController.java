@@ -3,13 +3,14 @@ package com.example.studybuddy.student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 /**
  * Třída sloužící k ovládání databáze
  */
 @RestController
-@RequestMapping("api/v1/student") //Tuto třídu lze najít na stránce na loalhost:8080//api/v1/student
+@RequestMapping("api/v1/student") //Tuto třídu lze najít na stránce na loalhost:8080/api/v1/student
 public class StudentController {
 
     private final StudentService studentService;
@@ -46,8 +47,16 @@ public class StudentController {
     /**
      * Příkaz na přepsání jednoho ze studentů
      */
-    @PutMapping(path = "{studentId}")
-    public void updateStudent( @PathVariable("studentId") Long studentId, @RequestParam(required = false) String name, @RequestParam(required = false) String email, @RequestParam(required = false) String password){
-        studentService.updateStudent(studentId, name, email, password);
+    @PutMapping(path = "password")
+    public void updateStudentPassword(@RequestBody PasswordChange passwordChange, Principal principal){
+        studentService.updateStudentPassword(principal.getName(),passwordChange.getOldPassword(),passwordChange.getNewPassword());
+    }
+
+    /**
+     * Příkaz na přepsání jednoho ze studentů
+     */
+    @PutMapping(path = "username")
+    public void updateStudentUsername(@RequestBody String newusername , Principal principal){
+        studentService.updateStudentUsename(principal.getName(), newusername);
     }
 }

@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Třída sloužící k ovládání databáze s příspěvky
@@ -34,40 +33,25 @@ public class ArticleController {
      * Příkaz na přidání článku
      */
     @PostMapping
-    public void addNewAtricle(@RequestBody ArticleRequest article, Principal principal) {
-        articleService.addNewArticle(article, principal);
+    public void addNewArticle(@RequestBody ArticleRequest article, Principal principal) {
+        articleService.addNewArticle(article, principal.getName());
     }
 
     /**
      * Příkaz na smazání článku
      */
-    @DeleteMapping(path = "{artilceId}")
-    public void delateArticle(@PathVariable("artilceId") Long artilceId){
-        articleService.delateArticle(artilceId);
+    @DeleteMapping(path = "delete")
+    public void deleteArticle(@RequestBody Long articleId){
+        articleService.delateArticle(articleId);
     }
-
-    /*
-    musí se dodělat aby jmeno autora, datum, nebo předmět brala aplikace z cesty
-    * */
 
     /**
      * Příkaz na dostání článků autora, jehož příspěvek chceme vidět
      */
     @GetMapping(value = "/autor")
-    public List<Article> getArticlesByAutor(String autor){
-        return articleService.getArticlesByAutor(autor);
+    public List<Article> getArticlesByAutor(Principal principal){
+        return articleService.getArticlesByAutor(principal.getName());
     }
 
-    /**
-     * Příkaz na dostání článku dle předmětu
-     */
-    @GetMapping(value = "/subject")
-    public List<Article> getArticlesBySubject(String subject){return articleService.getArticlesBySubject(subject);}
-
-    /**
-     * Příkaz na dostání článku z uvedeného data
-     */
-    @GetMapping(value = "/date")
-    public List<Article> getArticlesByDate(LocalDate date){return articleService.getArticlesByDate(date);}
 
 }

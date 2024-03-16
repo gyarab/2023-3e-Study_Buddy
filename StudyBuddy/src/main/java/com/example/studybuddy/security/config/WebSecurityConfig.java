@@ -31,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/v*/registration/**").permitAll()
                 .antMatchers("/registration").permitAll()
                 .antMatchers("/").permitAll()
-                //.antMatchers("/user/**").authenticated() // zamkne vše krom těch co nejsou uvedeny nahoře
+                .antMatchers("/user/**").authenticated() // zamkne vše krom těch co nejsou uvedeny nahoře
                 .and()
                 .formLogin()
                 .loginPage("/login")// nastaví vlastní stránky
