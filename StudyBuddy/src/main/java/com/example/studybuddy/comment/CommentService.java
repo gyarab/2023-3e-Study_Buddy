@@ -54,4 +54,7 @@ public class CommentService {
     }
 
 
+    public List<Comment> getCommentsById(Long articleId) {
+        return (List<Comment>) commentRepository.findCommentsByArticle(articleId).orElse( null);
+    }
 }

@@ -1,13 +1,22 @@
 import './Card.css';
 import PropTypes from "prop-types";
-import React from "react";
+import React, {useEffect} from "react";
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+
 
 function Card(props){
 
     const [comment, setComment] = React.useState('');
+    const [comments, setComments] = React.useState([]);
+    const [isMatch, setIsMatch] = React.useState(true);
 
     const handleCommentChange = (event) => {
         setComment(event.target.value);
+    };
+
+    const openComments = (event) => {
+        setIsMatch(!isMatch);
     };
 
     const handelOnClick=(e)=>{
@@ -21,6 +30,19 @@ function Card(props){
         })
     }
 
+    useEffect(()=>{
+        const articleId = props.id
+        fetch("http://localhost:8080/api/v1/comment/byid",{
+            method:"GET",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(articleId)
+        })
+            .then(res=>res.json())
+            .then((result)=>{
+                setComments(result);
+            })
+    },[])
+
     return(
         <div className="card">
             <h2>{props.title}</h2>
@@ -29,6 +51,7 @@ function Card(props){
                 <input value={comment} type="text" placeholder="Add new comment" onChange={handleCommentChange} />
                 <button onClick={handelOnClick}>Post comment</button>
             </div>
+            {isMatch ? (<><button onClick={openComments}>Comments<KeyboardArrowUpIcon/></button></>) : (<><button onClick={openComments}>Comments<KeyboardArrowDownIcon/></button> <br/> {comments.map(comm => (comm.text))}</>)}
         </div>
     )
 }

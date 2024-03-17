@@ -29,6 +29,14 @@ public class CommentController {
     }
 
     /**
+     * Příkaz na dostání komentářů
+     */
+    @GetMapping(path = "byid")
+    public List<Comment> getCommentById(@RequestBody Long articleId){
+        return commentService.getCommentsById(articleId);
+    }
+
+    /**
      * Příkaz na přidání komentáře
      */
     @PostMapping
