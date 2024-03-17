@@ -2,7 +2,6 @@ import './App.css';
 
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import CreateArticle from "./components/create/article/CreateArticle";
-import CreateComment from "./components/create/comment/CreateComment";
 import Articles from "./components/articles/Articles"
 import Home from "./components/home/Home"
 import Login from "./components/login/Login"

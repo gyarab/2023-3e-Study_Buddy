@@ -3,7 +3,6 @@ com\example\studybuddy\validators\NameValidator.class
 com\example\studybuddy\validators\PasswordValidator.class
 com\example\studybuddy\validators\IdValidator.class
 com\example\studybuddy\comment\Comment.class
-com\example\studybuddy\student\UsernameChange.class
 com\example\studybuddy\student\PasswordChange.class
 com\example\studybuddy\comment\CommentRequest.class
 com\example\studybuddy\article\ArticleRequest.class

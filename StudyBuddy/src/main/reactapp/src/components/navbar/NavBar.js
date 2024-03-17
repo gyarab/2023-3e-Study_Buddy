@@ -6,33 +6,94 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import {Container, CssBaseline, Fab, Fade, Tab, Tabs, useMediaQuery, useScrollTrigger, useTheme} from "@mui/material";
+import PropTypes from "prop-types";
+import {lightBlue} from "@mui/material/colors";
+import {useState} from "react";
+import DrawerSB from "./drawer_sb/DrawerSB";
+import {Navigate} from "react-router-dom";
 
-function NavBar(){
+function ScrollTop(props) {
+    const { children, window } = props;
+    // Note that you normally won't need to set the window ref as useScrollTrigger
+    // will default to window.
+    // This is only being set here because the demo is in an iframe.
+    const trigger = useScrollTrigger({
+        target: window ? window() : undefined,
+        disableHysteresis: true,
+        threshold: 100,
+    });
+
+    const handleClick = (event) => {
+        const anchor = (event.target.ownerDocument || document).querySelector(
+            '#back-to-top-anchor',
+        );
+
+        if (anchor) {
+            anchor.scrollIntoView({
+                block: 'center',
+            });
+        }
+    };
+
+    return (
+        <Fade in={trigger}>
+            <Box
+                onClick={handleClick}
+                role="presentation"
+                sx={{ position: 'fixed', bottom: 16, right: 16 }}
+            >
+                {children}
+            </Box>
+        </Fade>
+    );
+
+
+}
+
+export default function BackToTop(props) {
+    const [value,setValue] = useState();
+    const theme = useTheme();
+    const isMatch =useMediaQuery(theme.breakpoints.down('md'));
+    const PAGES = ["Home", "Articles", "Create Article", "Account"];
 
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+        <React.Fragment>
+            <CssBaseline />
+            <AppBar sx={{ background: "#211970"}}>
                 <Toolbar>
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="menu"
-                        sx={{ mr: 2 }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        <a className="nav-link" href="/">Study Buddy</a>
+                    <Typography variant="h6" component="div" sx={{marginRight: "15px"}}>
+                        Study Buddy
                     </Typography>
 
-                    <Button color="inherit"><a className="nav-link" href="/login">Login</a></Button>
+                    {isMatch ? (<>
+
+                        <DrawerSB/>
+                    </>):(<>
+                        <Tabs textColor="inherit" value={value} onChange={(e, value) => setValue(value)} idicatorColor="secondary">
+                            {PAGES.map((page, index) => (<Tab key={index} label={page} />))}
+
+                        </Tabs>
+
+                        <Button sx={{ marginLeft: "auto"}} variant="contained"><a className="nav-link" href="/login">Login</a></Button>
+                        <Button sx={{ marginLeft: '10px'}} variant="contained"><a className="nav-link" href="/register">Sign up</a></Button>
+                    </>)
+                    }
+
+
                 </Toolbar>
             </AppBar>
-        </Box>
+            <Toolbar id="back-to-top-anchor" />
+        </React.Fragment>
     );
 }
 
-export default NavBar;
+ScrollTop.propTypes = {
+    children: PropTypes.element.isRequired,
+    /**
+     * Injected by the documentation to work in an iframe.
+     * You won't need it on your project.
+     */
+    window: PropTypes.func,
+};
