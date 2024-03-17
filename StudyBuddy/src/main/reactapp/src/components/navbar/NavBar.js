@@ -52,11 +52,10 @@ function ScrollTop(props) {
 }
 
 export default function BackToTop(props) {
-    const [value,setValue] = useState();
     const theme = useTheme();
     const isMatch =useMediaQuery(theme.breakpoints.down('md'));
+    const PAGESROUT = ["/", "/user/articles", "/user/article/create", "/user/account"];
     const PAGES = ["Home", "Articles", "Create Article", "Account"];
-
 
     return (
         <React.Fragment>
@@ -71,8 +70,8 @@ export default function BackToTop(props) {
 
                         <DrawerSB/>
                     </>):(<>
-                        <Tabs textColor="inherit" value={value} onChange={(e, value) => setValue(value)} idicatorColor="secondary">
-                            {PAGES.map((page, index) => (<Tab key={index} label={page} />))}
+                        <Tabs textColor="inherit">
+                            {PAGES.map((page, index) => (<a className="nav-link" href={PAGESROUT[index]}><Tab key={index} label={page} /></a>))}
 
                         </Tabs>
 
@@ -80,8 +79,6 @@ export default function BackToTop(props) {
                         <Button sx={{ marginLeft: '10px'}} variant="contained"><a className="nav-link" href="/register">Sign up</a></Button>
                     </>)
                     }
-
-
                 </Toolbar>
             </AppBar>
             <Toolbar id="back-to-top-anchor" />
