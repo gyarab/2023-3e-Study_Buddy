@@ -41,7 +41,7 @@ public class ArticleService {
     public void addNewArticle(ArticleRequest articleRequest, String email) {
         Student student = studentRepository.findStudentsByEmail(email).orElseThrow(() -> new IllegalStateException("student s emailem " + email + " neexistuje"));
 
-        Article article = new Article(articleRequest.getTitle(), articleRequest.getArticle(), student.getId());
+        Article article = new Article(articleRequest.getTitle(), articleRequest.getArticle(), student.getId(), articleRequest.getArticleSubject());
 
         nameValidator.test(article);
 

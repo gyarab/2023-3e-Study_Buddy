@@ -15,4 +15,5 @@ import lombok.ToString;
 public class ArticleRequest {
     private final String title;
     private final String article;
+    private final Long articleSubject;
 }
