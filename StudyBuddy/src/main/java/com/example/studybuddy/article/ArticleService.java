@@ -1,6 +1,5 @@
 package com.example.studybuddy.article;
 
-import com.example.studybuddy.comment.Comment;
 import com.example.studybuddy.comment.CommentRepository;
 import com.example.studybuddy.comment.CommentService;
 import com.example.studybuddy.student.Student;
@@ -10,10 +9,7 @@ import com.example.studybuddy.validators.NameValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.security.Principal;
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Třída dělající příkazy
