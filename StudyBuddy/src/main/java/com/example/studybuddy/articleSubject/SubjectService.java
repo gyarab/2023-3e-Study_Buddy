@@ -23,7 +23,7 @@ public class SubjectService {
     }
 
     /**
-     * Vrátí předmět dle is
+     * Vrátí předmět dle id
      */
     public List<Subject> getSubjectById(Long id) {
 

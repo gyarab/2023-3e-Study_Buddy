@@ -104,6 +104,9 @@ public class StudentService implements UserDetailsService {
         return studentRepository.findStudentsByEmail(email).orElseThrow(() -> new UsernameNotFoundException(String.format(USER_NOT_FOUND)));
     }
 
+    /**
+     *  Přidá nového uživatele a pak pošle email
+     * */
     public String signUpUser(Student student){
         boolean userExists = studentRepository.findStudentsByEmail(student.getEmail()).isPresent();
 

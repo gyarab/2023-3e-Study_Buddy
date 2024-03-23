@@ -29,7 +29,7 @@ public class CommentController {
     }
 
     /**
-     * Příkaz na dostání komentářů
+     * Příkaz na dostání komentářů dle id
      */
     @GetMapping(path = "{id}")
     public List<Comment> getCommentById(@PathVariable("id") Long articleId){

@@ -45,7 +45,7 @@ public class ArticleController {
     }
 
     /**
-     * Příkaz na dostání článků autora, jehož příspěvek chceme vidět
+     * Příkaz na dostání článků přihlášeného autora
      */
     @GetMapping(value = "/autor")
     public List<Article> getArticlesByAutor(Principal principal){

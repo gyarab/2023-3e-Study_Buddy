@@ -49,7 +49,7 @@ public class ArticleService {
     }
 
     /**
-     * Metoda, která smaže článek z databáze podle id.
+     * Metoda, která smaže článek a komentáře, které jsou pod článkem, z databáze podle id
      * */
     public void delateArticle(Long artilceId) {
 

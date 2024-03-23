@@ -54,6 +54,9 @@ public class CommentService {
     }
 
 
+    /**
+     * Metoda, která vrací komentáře dle id autora
+     * */
     public List<Comment> getCommentsById(Long articleId) {
         return commentRepository.findCommentsByArticle(articleId);
     }

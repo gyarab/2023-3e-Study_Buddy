@@ -32,6 +32,4 @@ public class Comment {
         this.date = LocalDate.now();
         this.autor = autor;
     }
-
-    //TODO: musí se nějak zobrazit
 }

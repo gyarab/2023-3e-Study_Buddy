@@ -28,8 +28,8 @@ public class SubjectController {
     /**
      * Příkaz na dostání předmětu dle id
      */
-    @GetMapping(path = "/byid")
-    public List<Subject> getSubject(@RequestBody Long id){
+    @GetMapping(path = "{id}")
+    public List<Subject> getSubject(@PathVariable Long id){
         return subjectService.getSubjectById(id);
     }
 }

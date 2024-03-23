@@ -45,7 +45,7 @@ public class StudentController {
     }
 
     /**
-     * Příkaz na přepsání jednoho ze studentů
+     * Příkaz na přepsání hesla jednoho ze studentů
      */
     @PutMapping(path = "password")
     public void updateStudentPassword(@RequestBody PasswordChange passwordChange, Principal principal){
@@ -53,7 +53,7 @@ public class StudentController {
     }
 
     /**
-     * Příkaz na přepsání jednoho ze studentů
+     * Příkaz na přepsání uživatelského jména jednoho ze studentů
      */
     @PutMapping(path = "username")
     public void updateStudentUsername(@RequestBody String newusername , Principal principal){
