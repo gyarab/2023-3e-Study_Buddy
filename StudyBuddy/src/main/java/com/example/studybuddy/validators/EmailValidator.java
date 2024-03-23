@@ -20,7 +20,7 @@ public class EmailValidator  {
 
         Optional<Student> studentOptional = studentRepository.findStudentsByEmail(student.getEmail());
         if (studentOptional.isPresent()) {
-            throw new IllegalStateException("email je zabraný");
+            throw new IllegalStateException("email je zabrany");
         }
 
         if(!student.isEmail()){

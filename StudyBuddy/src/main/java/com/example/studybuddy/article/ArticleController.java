@@ -39,8 +39,8 @@ public class ArticleController {
     /**
      * Příkaz na smazání článku
      */
-    @DeleteMapping(path = "delete")
-    public void deleteArticle(@RequestBody Long articleId){
+    @DeleteMapping(path = "{articleId}")
+    public void deleteArticle(@PathVariable Long articleId){
         articleService.delateArticle(articleId);
     }
 
@@ -51,6 +51,4 @@ public class ArticleController {
     public List<Article> getArticlesByAutor(Principal principal){
         return articleService.getArticlesByAutor(principal.getName());
     }
-
-
 }

@@ -32,11 +32,7 @@ function Card(props){
 
     useEffect(()=>{
         const articleId = props.id
-        fetch("http://localhost:8080/api/v1/comment/byid",{
-            method:"GET",
-            headers:{"Content-Type":"application/json"},
-            body:JSON.stringify(articleId)
-        })
+        fetch("http://localhost:8080/api/v1/comment/"+articleId,{})
             .then(res=>res.json())
             .then((result)=>{
                 setComments(result);
@@ -51,7 +47,7 @@ function Card(props){
                 <input value={comment} type="text" placeholder="Add new comment" onChange={handleCommentChange} />
                 <button onClick={handelOnClick}>Post comment</button>
             </div>
-            {isMatch ? (<><button onClick={openComments}>Comments<KeyboardArrowUpIcon/></button></>) : (<><button onClick={openComments}>Comments<KeyboardArrowDownIcon/></button> <br/> {comments.map(comm => (comm.text))}</>)}
+            {isMatch ? (<><button onClick={openComments}>Comments<KeyboardArrowUpIcon/></button></>) : (<><button onClick={openComments}>Comments<KeyboardArrowDownIcon/></button> <br/> {comments.map(comm => (<p>{comm.text}</p>))}</>)}
         </div>
     )
 }
@@ -59,7 +55,7 @@ function Card(props){
 Card.propTypes = {
     title: PropTypes.string,
     text: PropTypes.string,
-    id: PropTypes.any,
+    id: PropTypes.object,
 }
 
 Card.defaultProps = {

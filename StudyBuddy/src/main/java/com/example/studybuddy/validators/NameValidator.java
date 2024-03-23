@@ -21,7 +21,7 @@ public class NameValidator {
     public void test(Student student) {
 
         if (!student.nameChars()) {
-            throw new IllegalStateException("moc krátné jmeno");
+            throw new IllegalStateException("moc kratne jmeno");
         }
     }
 
@@ -30,7 +30,7 @@ public class NameValidator {
         Optional<Article> articleOptional = articleRepository.findArticlesByTitle(article.getTitle());
 
         if (articleOptional.isPresent()) {
-            throw new IllegalStateException("Název již existuje. Zvolte jiný.");
+            throw new IllegalStateException("Nazev jiz existuje. Zvolte jiny.");
         }
     }
 }

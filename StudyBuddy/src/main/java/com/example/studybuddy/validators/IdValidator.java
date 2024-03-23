@@ -27,14 +27,14 @@ public class IdValidator {
     public void testArticle(Long artilceId) {
         boolean exist = articleRepository.existsById(artilceId);
         if (!exist) {
-            throw new IllegalStateException("článek s id " + artilceId + " neexistuje");
+            throw new IllegalStateException("clanek s id " + artilceId + " neexistuje");
         }
     }
 
     public void testComment(Long commentId) {
         boolean exist = commentRepository.existsById(commentId);
         if (!exist) {
-            throw new IllegalStateException("komentář s id " + commentId + " neexistuje");
+            throw new IllegalStateException("komentar s id " + commentId + " neexistuje");
         }
     }
 }

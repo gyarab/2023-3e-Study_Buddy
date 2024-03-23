@@ -12,7 +12,7 @@ function Articles(){
             .then(res=>res.json())
             .then((result)=>{
                 setArticles(result);
-        })
+            })
     },[])
 
     const listArticles = articles.map(article => <><Card title={article.title} text={article.article} id={article.id}/><br/></>)

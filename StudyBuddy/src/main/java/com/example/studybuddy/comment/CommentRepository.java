@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import java.util.List;
 
 
 /**
@@ -14,5 +14,5 @@ import java.util.Optional;
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 
     @Query("SELECT c FROM Comment c WHERE c.article = ?1")
-    Optional<Comment> findCommentsByArticle(Long article);
+    List<Comment> findCommentsByArticle(Long article);
 }

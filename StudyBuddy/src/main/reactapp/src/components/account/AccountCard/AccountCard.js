@@ -8,10 +8,8 @@ function AccountCard(props){
     const handelOnClick = (event) => {
         const articleId = props.id;
         event.preventDefault()
-        fetch("http://localhost:8080/api/v1/article/delete",{
-            method:"DELETE",
-            headers:{"Content-Type":"application/json"},
-            body:JSON.stringify(articleId)
+        fetch("http://localhost:8080/api/v1/article/"+articleId,{
+            method:"DELETE"
         })
     };
 
@@ -30,7 +28,7 @@ function AccountCard(props){
 AccountCard.propTypes = {
     title: PropTypes.string,
     text: PropTypes.string,
-    id: PropTypes.any,
+    id: PropTypes.object,
 }
 
 AccountCard.defaultProps = {

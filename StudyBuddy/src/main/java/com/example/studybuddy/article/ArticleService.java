@@ -1,5 +1,6 @@
 package com.example.studybuddy.article;
 
+import com.example.studybuddy.comment.Comment;
 import com.example.studybuddy.comment.CommentRepository;
 import com.example.studybuddy.comment.CommentService;
 import com.example.studybuddy.student.Student;
@@ -9,7 +10,9 @@ import com.example.studybuddy.validators.NameValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Třída dělající příkazy
@@ -52,12 +55,11 @@ public class ArticleService {
 
         idValidator.testArticle(artilceId);
 
-        //TODO: Musí se vymazat i komentáře, které obsahuje tento článek
-//        List<Comment> comment = (List<Comment>) commentRepository.findCommentsByArticle(artilceId).orElse(null);
-//
-//        for(Comment c: comment){
-//            commentService.delateComment(c.getId());
-//        }
+        List<Comment> comment = commentRepository.findCommentsByArticle(artilceId);
+
+        for(Comment c: comment){
+            commentService.deleteComment(c.getId());
+        }
 
         articleRepository.deleteById(artilceId);
     }

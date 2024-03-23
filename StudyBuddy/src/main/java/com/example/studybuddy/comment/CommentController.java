@@ -31,8 +31,8 @@ public class CommentController {
     /**
      * Příkaz na dostání komentářů
      */
-    @GetMapping(path = "byid")
-    public List<Comment> getCommentById(@RequestBody Long articleId){
+    @GetMapping(path = "{id}")
+    public List<Comment> getCommentById(@PathVariable("id") Long articleId){
         return commentService.getCommentsById(articleId);
     }
 
@@ -48,7 +48,7 @@ public class CommentController {
      * Příkaz na smazání komentáře
      */
     @DeleteMapping(path = "{commentId}")
-    public void delateComment(@PathVariable("commentId") Long commentId){
-        commentService.delateComment(commentId);
+    public void deleteComment(@PathVariable("commentId") Long commentId){
+        commentService.deleteComment(commentId);
     }
 }

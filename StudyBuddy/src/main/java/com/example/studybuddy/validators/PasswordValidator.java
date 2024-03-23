@@ -13,7 +13,7 @@ public class PasswordValidator {
     public void test(Student student) {
 
         if (!student.passwordChars()) {
-            throw new IllegalStateException("moc krátné heslo");
+            throw new IllegalStateException("moc kratne heslo");
         }
     }
 }

@@ -5,7 +5,7 @@ function Login () {
     const [password, setPassword] = React.useState('');
 
     const handleEmailChange = (event) => {
-        setEmail(event.target.value);
+        setEmail(event.target.value.toLowerCase());
     };
 
     const handlePasswordChange = (event) => {

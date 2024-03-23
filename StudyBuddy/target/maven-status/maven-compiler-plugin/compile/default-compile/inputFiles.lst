@@ -1,9 +1,9 @@
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\comment\CommentController.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\comment\CommentRepository.java
-D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\student\StudentRequest.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\StudyBuddyApplication.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\email\EmailSender.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\registration\RegistrationService.java
+D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\student\PasswordChange.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\validators\NameValidator.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\email\EmailService.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\registration\RegistrationController.java
@@ -12,7 +12,6 @@ D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\c
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\student\StudentService.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\registration\RegistrationRequest.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\article\ArticleRepository.java
-D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\articleSubject\SubjectRequest.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\article\ArticleService.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\comment\CommentRequest.java
 D:\SpringBootApps\RP 2023-2024 3E\2023-3e-Study_Buddy\StudyBuddy\src\main\java\com\example\studybuddy\validators\PasswordValidator.java

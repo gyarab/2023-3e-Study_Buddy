@@ -46,7 +46,7 @@ public class CommentService {
     /**
      * Metoda, která smaže komentář z databáze podle id.
      * */
-    public void delateComment(Long commentId) {
+    public void deleteComment(Long commentId) {
 
         idValidator.testComment(commentId);
 
@@ -55,6 +55,6 @@ public class CommentService {
 
 
     public List<Comment> getCommentsById(Long articleId) {
-        return (List<Comment>) commentRepository.findCommentsByArticle(articleId).orElse( null);
+        return commentRepository.findCommentsByArticle(articleId);
     }
 }
