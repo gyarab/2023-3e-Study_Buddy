@@ -72,4 +72,11 @@ public class ArticleService {
         Student student = studentRepository.findStudentsByEmail(autor).orElseThrow(() -> new IllegalStateException("student s emailem " + autor + " neexistuje"));
         return articleRepository.findArticlesByAutor(student.getId());
     }
+
+    /**
+     * Vrátí všechny články s daným předmětem
+     * */
+    public List<Article> getArticlesBySubject(Long subject) {
+        return articleRepository.findArticlesBySubject(subject);
+    }
 }

@@ -19,4 +19,6 @@ public interface ArticleRepository extends JpaRepository<Article, Long>{
     @Query("SELECT a FROM Article a WHERE a.autor = ?1")
     List<Article> findArticlesByAutor(Long autor);
 
+    @Query("SELECT a FROM Article a WHERE a.subject = ?1")
+    List<Article> findArticlesBySubject(Long subject);
 }

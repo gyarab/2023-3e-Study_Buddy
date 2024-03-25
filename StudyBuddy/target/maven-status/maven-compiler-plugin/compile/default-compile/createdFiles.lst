@@ -1,10 +1,10 @@
 com\example\studybuddy\comment\CommentService.class
+com\example\studybuddy\student\PasswordChange.class
+com\example\studybuddy\article\ArticleRequest.class
+com\example\studybuddy\validators\EmailValidator.class
+com\example\studybuddy\validators\TokenValidator.class
 com\example\studybuddy\validators\NameValidator.class
 com\example\studybuddy\validators\PasswordValidator.class
 com\example\studybuddy\validators\IdValidator.class
 com\example\studybuddy\comment\Comment.class
-com\example\studybuddy\student\PasswordChange.class
 com\example\studybuddy\comment\CommentRequest.class
-com\example\studybuddy\article\ArticleRequest.class
-com\example\studybuddy\validators\EmailValidator.class
-com\example\studybuddy\validators\TokenValidator.class

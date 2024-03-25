@@ -51,4 +51,12 @@ public class ArticleController {
     public List<Article> getArticlesByAutor(Principal principal){
         return articleService.getArticlesByAutor(principal.getName());
     }
+
+    /**
+     * Příkaz na dostání článků přihlášeného autora
+     */
+    @GetMapping(value = "/{subject}")
+    public List<Article> getArticlesBySubject(@PathVariable Long subject){
+        return articleService.getArticlesBySubject(subject);
+    }
 }
