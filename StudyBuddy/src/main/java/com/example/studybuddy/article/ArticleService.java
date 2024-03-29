@@ -10,8 +10,10 @@ import com.example.studybuddy.validators.NameValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -78,5 +80,14 @@ public class ArticleService {
      * */
     public List<Article> getArticlesBySubject(Long subject) {
         return articleRepository.findArticlesBySubject(subject);
+    }
+
+    @Transactional
+    public void updateArticleText(String updatedArticle, String title) {
+        Article article = articleRepository.findArticlesByTitle(title).orElseThrow(() -> new IllegalStateException("clanek s nazvem " + title + " neexistuje"));
+
+        System.out.println(updatedArticle);
+
+        article.setArticle(updatedArticle);
     }
 }

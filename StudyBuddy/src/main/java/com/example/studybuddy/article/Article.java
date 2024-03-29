@@ -48,5 +48,4 @@ public class Article {
         this.autor = autor;
         this.subject = subject;
     }
-    //TODO: Musí se naplnit databáze subject předměty a pak vytvořit přiřazování předmětů k článkům
 }

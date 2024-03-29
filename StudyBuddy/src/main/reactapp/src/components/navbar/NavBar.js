@@ -63,7 +63,7 @@ export default function BackToTop(props) {
             <AppBar sx={{ background: "#211970"}}>
                 <Toolbar>
                     <Typography variant="h6" component="div" sx={{marginRight: "15px"}}>
-                        Study Buddy
+                        <a className="nav-link" href="/"> Study Buddy </a>
                     </Typography>
 
                     {isMatch ? (<>

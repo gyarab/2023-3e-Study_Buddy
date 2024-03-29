@@ -1,5 +1,6 @@
 package com.example.studybuddy.article;
 
+import com.example.studybuddy.student.PasswordChange;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -58,5 +59,13 @@ public class ArticleController {
     @GetMapping(value = "{subject}")
     public List<Article> getArticlesBySubject(@PathVariable Long subject){
         return articleService.getArticlesBySubject(subject);
+    }
+
+    /**
+     * Příkaz na změnění textu článku
+     * */
+    @PutMapping(path = "title/{title}")
+    public void updateArticleText(@RequestBody String updatedArticle, @PathVariable String title){
+        articleService.updateArticleText(updatedArticle, title);
     }
 }

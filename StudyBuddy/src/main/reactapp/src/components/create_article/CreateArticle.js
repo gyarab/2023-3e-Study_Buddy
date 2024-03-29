@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css'
+import {Navigate} from "react-router-dom";
 
 function CreateArticle(){
 
@@ -8,6 +9,7 @@ function CreateArticle(){
     const [article, setArticle] = useState('');
     const [articleSubject, setArticleSubject] = useState(1);
     const [subjects, setSubjects] = useState([]);
+    const [nextPage, setNextPage] = useState(false);
 
     const toolbarOptions = [
         ['bold', 'italic', 'underline', 'strike'],
@@ -34,6 +36,7 @@ function CreateArticle(){
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(newArticle)
         })
+        setNextPage(true);
     }
     const handleTitleChange = (event) => {
         setTitle(event.target.value);
@@ -60,6 +63,11 @@ function CreateArticle(){
     },[article, articleSubject, title])
 
     const listSubjects = subjects.map(subject => <option value={subject.id}>{subject.name}</option>)
+
+
+    if(nextPage){
+        return  <Navigate to={"/"}/>;
+    }
 
     return (
         <div className="auth-form-container">
