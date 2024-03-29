@@ -12,6 +12,7 @@ function Account(){
             .then((result)=>{
                 setArticles(result);
             })
+
     },[])
 
     const handelOnClickChangeUsername=(e)=>{

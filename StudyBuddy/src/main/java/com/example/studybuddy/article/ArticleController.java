@@ -55,7 +55,7 @@ public class ArticleController {
     /**
      * Příkaz na dostání článků přihlášeného autora
      */
-    @GetMapping(value = "/{subject}")
+    @GetMapping(value = "{subject}")
     public List<Article> getArticlesBySubject(@PathVariable Long subject){
         return articleService.getArticlesBySubject(subject);
     }

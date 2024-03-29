@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from "react";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css'
-import Card from "../../articles/card/Card";
-import {Select} from "@mui/material";
 
 function CreateArticle(){
 
@@ -43,7 +41,13 @@ function CreateArticle(){
 
     const handleSubjectChange = (event) => {
         setArticleSubject(event.target.value);
+        console.log(event.target.value)
     };
+
+    useEffect(()=>{
+        setTitle(JSON.parse(window.localStorage.getItem('SET_TITLE')))
+        setArticle(JSON.parse(window.localStorage.getItem('SET_ARTICLE')))
+    },[])
 
     useEffect(()=>{
         fetch("http://localhost:8080/api/v1/subjects")
@@ -51,7 +55,9 @@ function CreateArticle(){
             .then((result)=>{
                 setSubjects(result)
             })
-    },[])
+        window.localStorage.setItem('SET_TITLE', JSON.stringify(title))
+        window.localStorage.setItem('SET_ARTICLE', JSON.stringify(article))
+    },[article, articleSubject, title])
 
     const listSubjects = subjects.map(subject => <option value={subject.id}>{subject.name}</option>)
 
