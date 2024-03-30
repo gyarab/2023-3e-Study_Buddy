@@ -1,5 +1,8 @@
 import React from 'react';
 import {Navigate} from "react-router-dom";
+import EditIcon from '@mui/icons-material/Edit';
+import EnhancedEncryptionIcon from "@mui/icons-material/EnhancedEncryption";
+
 
 function ResetPassword (){
     const [oldPassword, setOldPassword] = React.useState('');
@@ -29,11 +32,25 @@ function ResetPassword (){
     }
 
     return (
-        <div className="auth-form-container">
-            <h1>Change your password</h1>
-            <input value={oldPassword} type="password" placeholder="Old password" onChange={handleOldPasswordChange} />
-            <input value={newPassword} type="password" placeholder="New Password" onChange={handleNewPasswordChange} />
-            <button onClick={handelOnClick}>Reset Password</button>
+        <div className="auth-form-container body-log-reg">
+            <div className={"headline-log-reg"}>
+                <h4  className={"headline-log-reg-text"}>Change your password</h4>
+                <div className={"underline"}></div>
+            </div>
+            <div className={"inputs"}>
+                <div className={"input"}>
+                    <EnhancedEncryptionIcon className={"input-icon"}/><input value={oldPassword} type="password" placeholder="Old password" onChange={handleOldPasswordChange} />
+                </div>
+                <div className={"input"}>
+                    <EditIcon className={"input-icon"}/><input value={newPassword} type="password" placeholder="New password" onChange={handleNewPasswordChange} />
+                </div>
+            </div>
+
+            <div className={"buttons"}>
+                <div className={"button"}>
+                    <button onClick={handelOnClick}>Reset</button>
+                </div>
+            </div>
         </div>
     );
 }

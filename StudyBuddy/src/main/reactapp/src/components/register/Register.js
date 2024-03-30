@@ -1,6 +1,8 @@
 import React, {useEffect} from 'react';
 import {Navigate} from "react-router-dom";
-import "./Register.css";
+import PersonIcon from '@mui/icons-material/Person';
+import EmailIcon from '@mui/icons-material/Email';
+import EnhancedEncryptionIcon from "@mui/icons-material/EnhancedEncryption";
 
 function Register (){
     const [name, setUsername] = React.useState('');
@@ -48,15 +50,35 @@ function Register (){
         return <Navigate to={"/login"}/>;
     }
 
+    const handleLoginPage = (event) => {
+        setGoToChange(true);
+    }
 
     return (
-        <div className="auth-form-container register">
-            <h1>Sign-up</h1>
-            <input value={name} type="text" placeholder="Username" onChange={handleUsernameChange} />
-            <input value={email} type="email" placeholder="Email" onChange={handleEmailChange} />
-            <input value={password} type="password" placeholder="Password" onChange={handlePasswordChange} />
-            <button onClick={handelOnClick}>Sign-up</button>
-            <p className="link-btn">Already have an account? <a className="nav-link" href="/login"> Log in</a> </p>
+        <div className="auth-form-container body-log-reg">
+            <div className={"headline-log-reg"}>
+                <h1 className={"headline-log-reg-text"}>Sign-up</h1>
+                <div className={"underline"}></div>
+            </div>
+            <div className={"inputs"}>
+                <div className={"input"}>
+                    <PersonIcon className={"input-icon"}/><input value={name} type="text" placeholder="Username" onChange={handleUsernameChange} /><br/>
+                </div>
+                <div className={"input"}>
+                    <EmailIcon className={"input-icon"}/><input value={email} type="email" placeholder="Email" onChange={handleEmailChange} /><br/>
+                </div>
+                <div className={"input"}>
+                    <EnhancedEncryptionIcon className={"input-icon"}/><input value={password} type="password" placeholder="Password" onChange={handlePasswordChange} />
+                </div>
+            </div>
+            <div className={"buttons"}>
+                <div className={"button"}>
+                    <button onClick={handelOnClick}>Sign-up</button>
+                </div>
+                <div className={"button"}>
+                    <button onClick={handleLoginPage}>Log-in</button>
+                </div>
+            </div>
         </div>
     );
 }
