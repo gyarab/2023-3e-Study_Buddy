@@ -1,8 +1,10 @@
-import './Card.css';
+import '../../css/Card.css';
 import PropTypes from "prop-types";
 import React, {useEffect} from "react";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import CommentIcon from '@mui/icons-material/Comment';
+
 
 
 function Card(props){
@@ -37,17 +39,34 @@ function Card(props){
             .then((result)=>{
                 setComments(result);
             })
-    },[])
+    },[isMatch])
 
     return(
         <div className="card">
-            <h2>{props.title}</h2>
-            <div dangerouslySetInnerHTML={{__html:props.text}}/>
-            <div>
-                <input value={comment} type="text" placeholder="Add new comment" onChange={handleCommentChange} />
-                <button onClick={handelOnClick}>Post comment</button>
+            <h2 className={"article-title"}>{props.title}</h2>
+            <div className={"underline-sm"}></div>
+            <div className={"article-text"} dangerouslySetInnerHTML={{__html:props.text}}/>
+
+            <div className={"username-reset-card"}>
+                <div className={"input-third"}>
+                    <CommentIcon className={"input-icon-sec"}/><input value={comment} type="text" placeholder="Add new comment" onChange={handleCommentChange} />
+                </div>
+                <button onClick={handelOnClick}>Post</button>
             </div>
-            {isMatch ? (<><button onClick={openComments}>Comments<KeyboardArrowUpIcon/></button></>) : (<><button onClick={openComments}>Comments<KeyboardArrowDownIcon/></button> <br/> {comments.map(comm => (<p>{comm.text}</p>))}</>)}
+                {isMatch ? (
+                    <div className={"comments"}>
+                        <button onClick={openComments}>Comments<KeyboardArrowDownIcon/></button>
+                    </div>
+                ) : (
+                    <div className={"comments"}>
+                        <button onClick={openComments}>Comments<KeyboardArrowUpIcon/></button>
+                            {comments.length==0 ? (
+                                <div className={"none-comments"}>None comments found</div>
+                            ) : (
+                                <div className={"comment-other-line"}>{comments.map(comm => (<div><div className={"comment"}>{comm.text}</div></div>))}</div>
+                            )}
+                    </div>
+                )}
         </div>
     )
 }

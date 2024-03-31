@@ -47,11 +47,17 @@ function UpdateArticle(){
     }
 
     return (
-        <div className="auth-form-container">
-            <h1>Update your old article</h1>
-            <br/>
-            <ReactQuill modules={module} theme={"snow"} value={article} placeholder="Text" onChange={setArticle}/>
-            <button onClick={handelOnClick}>Update new article</button>
+        <div className="auth-form-container body-sec">
+            <div className={"article-settings"}>
+                <ReactQuill modules={module} theme={"snow"} value={article} placeholder="Text" onChange={setArticle}/>
+            </div>
+            <div className={"bottom-button"}>
+                <div className={"article-buttons"}>
+                    <div className={"article-button-update"}>
+                        <button onClick={handelOnClick}>Update</button>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

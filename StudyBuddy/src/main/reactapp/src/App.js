@@ -11,7 +11,7 @@ import Account from "./components/account/Account";
 import NavBar from "./components/navbar/NavBar";
 import ResetPassword from "./components/reset_password/ResetPassword";
 import UpdateArticle from "./components/update_article/UpdateArticle";
-import {useMediaQuery, useTheme} from "@mui/material";
+import './components/css/CreateUpdateArticlesAccount.css'
 
 function App() {
   return (

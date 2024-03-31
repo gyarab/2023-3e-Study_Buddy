@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css'
 import {Navigate} from "react-router-dom";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import SubtitlesIcon from '@mui/icons-material/Subtitles';
 
 function CreateArticle(){
 
@@ -70,15 +72,29 @@ function CreateArticle(){
     }
 
     return (
-        <div className="auth-form-container">
-            <h1>Create and post your own article</h1>
-            <input value={title} type="text" placeholder="title" onChange={handleTitleChange} />
-            <br/>
-            <ReactQuill modules={module} theme={"snow"} value={article} placeholder="Text" onChange={setArticle}/>
-            <select className={"selectSubject"} onChange={handleSubjectChange}>
-                {listSubjects}
-            </select>
-            <button onClick={handelOnClick}>Post new article</button>
+        <div className="auth-form-container body-sec">
+            <div className={"article-settings"}>
+                <div className={"title-article"}>
+                    <SubtitlesIcon className={"input-icon-sm"}/><input value={title} type="text" placeholder="title" onChange={handleTitleChange} />
+
+                    <div>
+                        <div>
+                            <select onChange={handleSubjectChange}>
+                                {listSubjects}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <ReactQuill modules={module} theme={"snow"} value={article} placeholder="Text" onChange={setArticle}/>
+            </div>
+
+            <div className={"bottom-button"}>
+                <div className={"article-buttons"}>
+                    <div className={"article-body"}>
+                        <button onClick={handelOnClick}>Post new article</button>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

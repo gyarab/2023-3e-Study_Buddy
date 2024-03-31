@@ -34,7 +34,7 @@ function ResetPassword (){
     return (
         <div className="auth-form-container body-log-reg">
             <div className={"headline-log-reg"}>
-                <h4  className={"headline-log-reg-text"}>Change your password</h4>
+                <h2  className={"headline-log-reg-text"}>Change your password</h2>
                 <div className={"underline"}></div>
             </div>
             <div className={"inputs"}>

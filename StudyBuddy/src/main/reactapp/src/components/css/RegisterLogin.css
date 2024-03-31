@@ -95,7 +95,14 @@
     background: #4932CD;
     border-radius: 50px;
     cursor: pointer;
+    border:1px solid hsl(0,0%,80%);
+    box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
 }
+
+.button:hover {
+    background: #3b28a5;
+}
+
 .button button {
     height: 100%;
     width: 100%;
@@ -105,5 +112,17 @@
     background: transparent;
     border: none;
     outline: none;
+}
 
+.while-button {
+    background: white;
+    border:2px solid #4932CD;
+}
+
+.while-button button{
+    color: #4932CD;
+}
+
+.while-button:hover {
+    background: #eaeaea;
 }

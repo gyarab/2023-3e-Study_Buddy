@@ -38,7 +38,7 @@ function Login () {
         <form name="f" className={"body-log-reg"} method="post">
             <fieldset>
                 <div className={"headline-log-reg"}>
-                    <h1 className={"headline-log-reg-text"}>Log-in</h1>
+                    <h2 className={"headline-log-reg-text"}>Log-in</h2>
                     <div className={"underline"}></div>
                 </div>
                 <div className={"inputs"}>
@@ -50,7 +50,7 @@ function Login () {
                     </div>
                 </div>
                 <div className={"buttons"}>
-                    <div className="form-actions button">
+                    <div className="form-actions button while-button">
                         <button >Log-in</button>
                     </div>
                     <div className={"button"}>

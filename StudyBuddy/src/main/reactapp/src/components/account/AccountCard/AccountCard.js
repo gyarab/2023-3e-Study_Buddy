@@ -1,4 +1,4 @@
-import '../../articles/card/Card.css';
+import '../../css/Card.css';
 import PropTypes from "prop-types";
 import React, {useState} from "react";
 import {Navigate} from "react-router-dom";
@@ -6,6 +6,7 @@ import {Navigate} from "react-router-dom";
 function AccountCard(props){
 
     const [nextPage, setNextPage] = useState(false);
+    const [homepage, setHomepage] = useState(false);
 
     const handelOnClickDelate = (event) => {
         const articleId = props.id;
@@ -13,6 +14,7 @@ function AccountCard(props){
         fetch("http://localhost:8080/api/v1/article/"+articleId,{
             method:"DELETE"
         })
+        setHomepage(true);
     };
 
     const handelOnClickUpdate = (event) => {
@@ -26,13 +28,22 @@ function AccountCard(props){
         return  <Navigate to={"/user/article/update"}/>;
     }
 
+    if(homepage){
+        return  <Navigate to={"/"}/>;
+    }
+
     return(
         <div className="card">
-            <h2>{props.title}</h2>
-            <div dangerouslySetInnerHTML={{__html:props.text}}/>
-            <div>
-                <button onClick={handelOnClickDelate}>Delete Article</button>
-                <button onClick={handelOnClickUpdate}>Update Article</button>
+            <h2 className={"article-title"} >{props.title}</h2>
+            <div className={"underline-sm"}></div>
+            <div className={"article-text"} dangerouslySetInnerHTML={{__html:props.text}}/>
+            <div className={"article-buttons"}>
+                <div className={"article-button-delete"}>
+                    <button onClick={handelOnClickDelate}>Delete Article</button>
+                </div>
+                <div>
+                    <button onClick={handelOnClickUpdate}>Update Article</button>
+                </div>
             </div>
         </div>
     )

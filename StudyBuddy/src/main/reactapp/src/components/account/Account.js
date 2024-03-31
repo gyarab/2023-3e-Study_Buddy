@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
 import AccountCard from "./AccountCard/AccountCard";
+import PersonIcon from '@mui/icons-material/Person';
+
 
 function Account(){
 
@@ -26,22 +28,37 @@ function Account(){
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
     };
-    const listArticles = articles.map(article => <><AccountCard title={article.title} text={article.article} id={article.id}/><br/></>)
+    const listArticles = articles.map(article => <div className={"article"}><AccountCard title={article.title} text={article.article} id={article.id}/></div>)
 
     return(
         <>
-            <div>
-                <div>
+            <div className={"body-sec"}>
+                <div className={"head-sec"}>
+                    <h2 className={"headline-log-reg-text"}>Account</h2>
+                    <div className={"underline"}></div>
+                </div>
+                <div className={"password-buttons"}>
                     <button><a className="nav-link" href="/login/reset_password">Reset your password</a></button>
                 </div>
-                <div>
-                    <p>Reset your username</p>
-                    <input value={username} type="text" placeholder="new username" onChange={handleUsernameChange} />
-                    <button onClick={handelOnClickChangeUsername}>Post comment</button>
+                <div className={"head-sec-sm"}>
+                    <h3 className={"headline-sec"}>Reset your username</h3>
+                    <div className={"underline-sm"}></div>
                 </div>
-                <div>
-                    <p>Your articles:</p>
-                    {listArticles}
+                <div className={"inputs"}>
+                    <div className={"username-reset"}>
+
+                        <div className={"input-sec"}>
+                            <PersonIcon className={"input-icon-sec"}/><input value={username} type="text" placeholder="New Username" onChange={handleUsernameChange} />
+                        </div>
+                        <button onClick={handelOnClickChangeUsername}>Reset</button>
+                    </div>
+                </div>
+                <div className={"head-sec-sm"}>
+                    <h3 className={"headline-sec"}>Your articles</h3>
+                    <div className={"underline-sm"}></div>
+                </div>
+                <div className={"articles"}>
+                    {listArticles.length==0 ? (<p className={"none-articles"}>None articles posted</p>):(<>{listArticles}</>)}
                 </div>
             </div>
         </>);

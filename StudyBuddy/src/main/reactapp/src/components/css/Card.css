@@ -1,0 +1,146 @@
+.card {
+    display: flex;
+    border:1px solid hsl(0,0%,80%);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
+    padding: 20px;
+    width: 100%;
+    margin: 10px 0px;
+    display: inline-block;
+    align: center;
+}
+
+.article-text {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: #626262;
+}
+
+.article-title {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    color: #4932CD;
+}
+
+.article-buttons {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    gap: 20px;
+}
+
+.article-buttons button {
+    justify-content: center;
+    width: 150px;
+    height: 35px;
+    border-radius: 50px;
+    background: #ffffff;
+    color: #4932CD;
+    cursor: pointer;
+    border:2px solid #4932CD;
+    box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
+}
+
+
+.article-buttons button:hover {
+    background: #dedede;
+}
+
+
+.article-button-delete button {
+    color: #fff;
+    background: #F4331D;
+    border:1px solid hsl(0,0%,80%);
+}
+
+.article-button-delete button:hover {
+    background: #d01e0a;
+}
+
+.article-button-update button {
+    color: #fff;
+    background: #02c205;
+    border:1px solid hsl(0,0%,80%);
+}
+
+.article-button-update button:hover {
+    background: #01a903;
+}
+
+
+.username-reset-card {
+    display: flex;
+}
+
+
+.username-reset-card button {
+    margin-left: 2%;
+    justify-content: center;
+    width: 120px;
+    height: 35px;
+    color: #4932CD;
+    background: #ffffff;;
+    border-radius: 50px;
+    cursor: pointer;
+    border:1px solid #4932CD;
+    box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
+}
+
+
+.username-reset-card button:hover {
+    background: #dedede;
+}
+
+.input-third {
+    display: flex;
+    width: 100%;
+    height: 35px;
+    background: #eaeaea;
+    border-radius: 9px;
+    align-items: center;
+}
+
+.comments {
+    margin-top: 20px;
+}
+
+.comments button{
+    background: white;
+    border: none;
+    color: #797979;
+    border-radius: 9px;
+}
+
+.comments button:hover {
+    color: #4932CD;
+}
+
+.comment {
+    background: #eaeaea;
+    color: #797979;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin: 5px;
+    margin-top: 10px;
+    display: inline-block;
+    align: center;
+}
+
+.comment-other-line {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.none-comments {
+    padding: 5px 10px;
+    margin: 5px;
+    margin-top: 10px;
+    display: flex;
+    color: #797979;
+    font-size: 14px;
+}
+
+.card img {
+    max-width: 100%;
+}

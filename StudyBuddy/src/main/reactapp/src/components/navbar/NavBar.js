@@ -75,8 +75,8 @@ export default function BackToTop(props) {
 
                         </Tabs>
 
-                        <Button sx={{ marginLeft: "auto"}} variant="contained"><a className="nav-link" href="/login">Login</a></Button>
-                        <Button sx={{ marginLeft: '10px'}} variant="contained"><a className="nav-link" href="/register">Sign up</a></Button>
+                        <Button sx={{ marginLeft: "auto"}   } variant="contained"><a className="nav-link" href="/login">Log-in</a></Button>
+                        <Button sx={{ marginLeft: '10px'}} variant="contained"><a className="nav-link" href="/register">Sign-up</a></Button>
                     </>)
                     }
                 </Toolbar>

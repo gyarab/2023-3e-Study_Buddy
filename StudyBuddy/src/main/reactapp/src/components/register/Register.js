@@ -57,7 +57,7 @@ function Register (){
     return (
         <div className="auth-form-container body-log-reg">
             <div className={"headline-log-reg"}>
-                <h1 className={"headline-log-reg-text"}>Sign-up</h1>
+                <h2 className={"headline-log-reg-text"}>Sign-up</h2>
                 <div className={"underline"}></div>
             </div>
             <div className={"inputs"}>
@@ -73,10 +73,10 @@ function Register (){
             </div>
             <div className={"buttons"}>
                 <div className={"button"}>
-                    <button onClick={handelOnClick}>Sign-up</button>
-                </div>
-                <div className={"button"}>
                     <button onClick={handleLoginPage}>Log-in</button>
+                </div>
+                <div className={"button while-button"}>
+                    <button onClick={handelOnClick}>Sign-up</button>
                 </div>
             </div>
         </div>
