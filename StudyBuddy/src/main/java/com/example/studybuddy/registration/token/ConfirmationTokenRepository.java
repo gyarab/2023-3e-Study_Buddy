@@ -1,5 +1,6 @@
 package com.example.studybuddy.registration.token;
 
+import com.example.studybuddy.student.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -19,4 +20,8 @@ public interface ConfirmationTokenRepository extends JpaRepository<ConfirmationT
     @Modifying
     @Query("UPDATE ConfirmationToken c " + "SET c.confirmedat = ?2 " + "WHERE c.token = ?1")
     int updateConfirmedAt(String token, LocalDateTime confirmedAt);
+
+
+    @Query("SELECT c FROM ConfirmationToken c WHERE c.student.email = ?1")
+    ConfirmationToken findTokenByStudentEmail(String email);
 }

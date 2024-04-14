@@ -17,6 +17,12 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     @Query("SELECT s FROM Student s WHERE s.email = ?1")
     Optional<Student> findStudentsByEmail(String email);
 
+
+
+    @Query("SELECT s FROM Student s WHERE s.email = ?1")
+    Student getStudentsByEmail(String email);
+
+
     @Transactional
     @Modifying
     @Query("UPDATE Student a SET a.enabled= TRUE WHERE a.email = ?1")

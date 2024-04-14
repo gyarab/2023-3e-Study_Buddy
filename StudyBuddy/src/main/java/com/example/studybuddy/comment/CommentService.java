@@ -1,16 +1,12 @@
 package com.example.studybuddy.comment;
 
-import com.example.studybuddy.article.Article;
-import com.example.studybuddy.student.Student;
 import com.example.studybuddy.student.StudentRepository;
 import com.example.studybuddy.validators.IdValidator;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Třída dělající komentářů

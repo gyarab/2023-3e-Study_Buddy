@@ -6,7 +6,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -37,7 +36,7 @@ public class Student implements UserDetails {
     @Column(name = "locked")
     private Boolean locked = false;
     @Column(name = "enabled")
-    private Boolean enabled = true;// pro testování bez email ověřování se musí dát na true
+    private Boolean enabled = false;// pro testování bez email ověřování se musí dát na true
 
 
     /**

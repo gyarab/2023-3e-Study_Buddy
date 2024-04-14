@@ -20,20 +20,6 @@ function Articles(){
             })
     },[])
 
-    useEffect(()=>{
-        fetch("http://localhost:8080/api/v1/article")
-            .then(res=>res.json())
-            .then((result)=>{
-                setArticles(result);
-            })
-        fetch("http://localhost:8080/api/v1/subjects")
-            .then(res=>res.json())
-            .then((result)=>{
-                setSubjects(result);
-            })
-
-    },[])
-
     const handleSubjectChange = (event) => {
         if(event.target.value==0){
             fetch("http://localhost:8080/api/v1/article")

@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css'
 import {Navigate} from "react-router-dom";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SubtitlesIcon from '@mui/icons-material/Subtitles';
 
 function CreateArticle(){

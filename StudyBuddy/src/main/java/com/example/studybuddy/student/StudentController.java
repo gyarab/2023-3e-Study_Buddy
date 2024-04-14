@@ -10,7 +10,7 @@ import java.util.List;
  * Třída sloužící k ovládání databáze
  */
 @RestController
-@RequestMapping("api/v1/student") //Tuto třídu lze najít na stránce na loalhost:8080/api/v1/student
+@RequestMapping("api/v1/student") //Tuto třídu lze najít na stránce na localhost:8080/api/v1/student
 public class StudentController {
 
     private final StudentService studentService;

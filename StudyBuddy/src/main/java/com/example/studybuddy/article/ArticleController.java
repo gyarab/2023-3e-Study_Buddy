@@ -1,6 +1,5 @@
 package com.example.studybuddy.article;
 
-import com.example.studybuddy.student.PasswordChange;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +10,7 @@ import java.util.List;
  * Třída sloužící k ovládání databáze s příspěvky
  */
 @RestController
-@RequestMapping("api/v1/article") //Tuto třídu lze najít na stránce na loalhost:8080//api/v1/article
+@RequestMapping("api/v1/article") //Tuto třídu lze najít na stránce na loalhost:8080/api/v1/article
 public class ArticleController {
 
     private final ArticleService articleService;

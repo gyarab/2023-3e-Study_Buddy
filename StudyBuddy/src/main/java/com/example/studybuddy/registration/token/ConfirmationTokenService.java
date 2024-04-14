@@ -28,4 +28,8 @@ public class ConfirmationTokenService {
                 token, LocalDateTime.now());
     }
 
+    public void deleteToken(Long id){
+        confirmationTokenRepository.deleteById(id);
+    }
+
 }

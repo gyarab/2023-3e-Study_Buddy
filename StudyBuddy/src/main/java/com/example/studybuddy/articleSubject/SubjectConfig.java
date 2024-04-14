@@ -15,17 +15,20 @@ public class SubjectConfig {
             Subject english = new Subject(
                     "English Language"
             );
-            Subject math = new Subject(
-                    "Mathematics"
-            );
             Subject language = new Subject(
                     "Other Language"
+            );
+            Subject math = new Subject(
+                    "Mathematics"
             );
             Subject biologic = new Subject(
                     "Biologic"
             );
             Subject geography = new Subject(
                     "Geography"
+            );
+            Subject geology = new Subject(
+                    "Geology"
             );
             Subject music = new Subject(
                     "Music"
@@ -42,11 +45,14 @@ public class SubjectConfig {
             Subject physics = new Subject(
                     "Physics"
             );
+            Subject informatics = new Subject(
+                    "Informatics"
+            );
             Subject other = new Subject(
                     "Other"
             );
             repository.saveAll(
-                    List.of(english,math,language,biologic,geography,music,art,history,chemistry,physics,other)
+                    List.of(english,math,language,biologic,geography,geology,music,art,history,chemistry,physics,informatics,other)
             );
         };
     }

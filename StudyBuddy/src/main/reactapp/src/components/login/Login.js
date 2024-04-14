@@ -6,7 +6,6 @@ import {Navigate} from "react-router-dom";
 function Login () {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
-    const [bodyClassName, setBodyClassname] = React.useState('');
     const [goToChange, setGoToChange] = React.useState(false);//body-log-reg-md
 
     const handleEmailChange = (event) => {
