@@ -210,3 +210,36 @@
 .select-subject:hover    {
     background: #402bb9;
 }
+
+.ul-style {
+    color: #797979;
+    font-size: 15px;
+}
+
+.button-homepage {
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    height: 40px;
+    background: #4932CD;
+    border-radius: 50px;
+    cursor: pointer;
+    border:1px solid hsl(0,0%,80%);
+    box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
+    margin-bottom: 10px;
+}
+
+.button-homepage:hover {
+    background: #3b28a5;
+}
+
+.button-homepage button {
+    height: 100%;
+    width: 100%;
+    font-size: 19px;
+    font-width: 700;
+    color: #fff;
+    background: transparent;
+    border: none;
+    outline: none;
+}
